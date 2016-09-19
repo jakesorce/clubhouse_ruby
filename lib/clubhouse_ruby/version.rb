@@ -1,3 +1,3 @@
-class ClubhouseRuby
+module ClubhouseRuby
   VERSION = "0.1.0"
 end
