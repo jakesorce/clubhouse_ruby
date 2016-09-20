@@ -8,3 +8,4 @@
 /spec/reports/
 /tmp/
 .env
+/spec/vcr_casettes/**/*.yml
