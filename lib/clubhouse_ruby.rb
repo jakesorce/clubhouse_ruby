@@ -1,14 +1,16 @@
 require "clubhouse_ruby/version"
+require "clubhouse_ruby/constants"
+require "clubhouse_ruby/path_builder"
 require "clubhouse_ruby/request"
 
 module ClubhouseRuby
   class Clubhouse
-    RESPONSE_FORMATS = ["application/json", "text/csv"].freeze
+    include PathBuilder
 
     attr_accessor :token, :response_format
 
-    def initialize(token, response_format: "application/json")
-      raise ArgumentError unless RESPONSE_FORMATS.include?(response_format)
+    def initialize(token, response_format: :json)
+      raise ArgumentError unless ClubhouseRuby::FORMATS.keys.include?(response_format)
 
       self.token = token
       self.response_format = response_format
