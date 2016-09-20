@@ -10,10 +10,16 @@ module ClubhouseRuby
     attr_accessor :token, :response_format
 
     def initialize(token, response_format: :json)
-      raise ArgumentError unless ClubhouseRuby::FORMATS.keys.include?(response_format)
+      raise ArgumentError unless validate_input(token, response_format)
 
       self.token = token
       self.response_format = response_format
+    end
+
+    private
+
+    def validate_input(token, response_format)
+      !token.nil? && ClubhouseRuby::FORMATS.keys.include?(response_format)
     end
   end
 end
