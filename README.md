@@ -41,7 +41,7 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ## TODO
 
-- Request (lib, process, status responses, messages)
-- Logging
-- Errors (internal)
-- Methods
+- The specs shared context and are generally rushed and bad
+- The specs just use magic numbers based on things I entered in a Clubhouse account to try things out
+- The errors/logs for a user are bad/unclear - specifically, there are a number of internal scenarios we have information about, but the end result is just a 403 from the API.
+- Docs
