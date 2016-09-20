@@ -6,7 +6,7 @@ describe ClubhouseRuby::Request do
     ch.stories(123).comments
   end
 
-  context ".new" do
+  context '.new' do
     it 'requires a call_object' do
       expect { described_class.new(nil, method: :Get) }.to raise_error(ArgumentError)
     end
@@ -20,7 +20,7 @@ describe ClubhouseRuby::Request do
     end
   end
 
-  context "#fetch" do
+  context '#fetch' do
     it 'makes the api call' do
       req = described_class.new(call_obj, method: :Get)
 
@@ -29,9 +29,22 @@ describe ClubhouseRuby::Request do
       req.fetch
     end
 
-    it 'successfully retrieves some non-exhaustive examples of api calls I suppose', :vcr do
-      ch = ClubhouseRuby::Clubhouse.new(ENV['API_TOKEN'])
-      #p ch.epics.list
+    context 'making some non-exhaustive examples of api calls i suppose' do
+      let(:ch) { ClubhouseRuby::Clubhouse.new(ENV['API_TOKEN']) }
+
+      it 'gets a list of epics', :vcr do
+        response = ch.epics.list
+        expect(response[:code]).to eq('200')
+        expect(response[:status]).to eq('OK')
+        expect(response[:content].first['id']).to eq(6)
+      end
+
+      it 'gets a specific epic', :vcr do
+        response = ch.epics.get(id: 6)
+        expect(response[:code]).to eq('200')
+        expect(response[:status]).to eq('OK')
+        expect(response[:content]['id']).to eq(6)
+      end
     end
   end
 end

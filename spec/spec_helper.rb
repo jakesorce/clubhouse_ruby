@@ -10,4 +10,6 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
 end
 
+require 'json'
+
 require 'clubhouse_ruby'
