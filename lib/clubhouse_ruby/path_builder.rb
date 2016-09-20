@@ -13,18 +13,28 @@ module ClubhouseRuby
           method: ClubhouseRuby::METHODS[name],
           params: args.first
         )
-        self.path = []
+        clear_path
         req.fetch
-      else
-        self.path ||= []
-        self.path << name
-        self.path << args.first if args.first
+      elsif ClubhouseRuby::RESOURCES.include?(name)
+        build_path(name, args.first)
         self
+      else
+        super
       end
     end
 
-    def respond_to_missing?
-      #TODO
+    def build_path(resource, id)
+      self.path ||= []
+      self.path << resource
+      self.path << id if id
+    end
+
+    def clear_path
+      self.path = []
+    end
+
+    def respond_to_missing?(name, include_private = false)
+      ClubhouseRuby::METHODS.keys.include?(name) || ClubhouseRuby::RESOURCES.include?(name) || super
     end
   end
 end
