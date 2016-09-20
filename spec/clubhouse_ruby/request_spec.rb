@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 describe ClubhouseRuby::Request do
-  API_TOKEN = "MY CLUBHOUSE API TOKEN".freeze
   let(:call_obj) do
-    ch = ClubhouseRuby::Clubhouse.new(API_TOKEN)
+    ch = ClubhouseRuby::Clubhouse.new(ENV['API_TOKEN'])
     ch.stories(123).comments
   end
 

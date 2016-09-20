@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe ClubhouseRuby::PathBuilder do
-  API_TOKEN = "MY CLUBHOUSE API TOKEN".freeze
-  let(:call_obj) { ClubhouseRuby::Clubhouse.new(API_TOKEN) }
+  let(:call_obj) { ClubhouseRuby::Clubhouse.new(ENV['API_TOKEN']) }
 
   before(:example) do
     call_obj.clear_path
