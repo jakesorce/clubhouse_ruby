@@ -14,4 +14,19 @@ module ClubhouseRuby
     create: :Post,
     search: :Post
   }.freeze
+
+  RESOURCES = [
+    :epics,
+    :files,
+    :labels,
+    :linked_files,
+    :projects,
+    :story_links,
+    :stories,
+    :bulk,
+    :tasks,
+    :comments,
+    :users,
+    :workflows
+  ]
 end
