@@ -31,8 +31,9 @@ describe ClubhouseRuby::PathBuilder do
 
   it 'recognizes and executes known methods, ending the path' do
     resource = ClubhouseRuby::RESOURCES.sample
-    result = call_obj.send(resource)
     method = ClubhouseRuby::METHODS.keys.sample
+
+    result = call_obj.send(resource)
 
     expect(Net::HTTP).to receive(:start)
 

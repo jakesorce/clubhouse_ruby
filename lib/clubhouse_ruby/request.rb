@@ -16,7 +16,7 @@ module ClubhouseRuby
 
     def fetch
       Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |https|
-        req = Net::HTTP.const_get(method.capitalize).new(uri)
+        req = Net::HTTP.const_get(method).new(uri)
 
         set_body(req)
         set_format_header(req)
@@ -32,8 +32,8 @@ module ClubhouseRuby
         !call_object.path.nil? &&
         !call_object.token.nil? &&
         !call_object.response_format.nil? &&
-        ClubhouseRuby::METHODS.keys.include?(method) &&
-        params.is_a?(Hash) || params.nil?
+        ClubhouseRuby::METHODS.values.include?(method) &&
+        (params.is_a?(Hash) || params.nil?)
     end
 
     def construct_uri(call_object)
