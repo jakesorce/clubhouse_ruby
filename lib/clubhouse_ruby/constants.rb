@@ -28,5 +28,5 @@ module ClubhouseRuby
     :comments,
     :users,
     :workflows
-  ]
+  ].freeze
 end
