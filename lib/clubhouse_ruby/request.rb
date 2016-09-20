@@ -3,16 +3,15 @@ require 'json'
 
 module ClubhouseRuby
   class Request
-    attr_accessor :method, :uri, :response_format, :params
+    attr_accessor :uri, :method, :response_format, :params
 
-    #def initialize(path:, method:, response_format:, token:, params: {})
     def initialize(call_object, method:, params: {})
       raise ArgumentError unless validate_input(call_object, method, params)
 
-      self.uri = construct_uri(call_object, params)
+      self.params = params || {}
+      self.uri = construct_uri(call_object)
       self.method = method
       self.response_format = call_object.response_format
-      self.params = params
     end
 
     def fetch
@@ -29,17 +28,18 @@ module ClubhouseRuby
     private
 
     def validate_input(call_object, method, params)
-      !call_object.path.nil? &&
+      !call_object.nil? &&
+        !call_object.path.nil? &&
         !call_object.token.nil? &&
         !call_object.response_format.nil? &&
         ClubhouseRuby::METHODS.keys.include?(method) &&
         params.is_a?(Hash) || params.nil?
     end
 
-    def construct_uri(call_object, params)
+    def construct_uri(call_object)
       base_url = ClubhouseRuby::API_URL
-      path = call_object.path.join('/')
-      object_id = params.delete(:id).to_s
+      path = call_object.path.map(&:to_s).map { |p| p.gsub('_', '-') }.join('/')
+      object_id = self.params.delete(:id).to_s
       auth = "?token=#{call_object.token}"
       URI(base_url + path + object_id + auth)
     end
