@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 IFS=$'\n\t'
-set -vx
 
 bundle install
 
-# Do any other automated setup that you need to do here
+touch .env
+if [[ $(grep API_TOKEN .env) == "" ]]; then
+  echo "API_TOKEN=<YOUR CLUBHOUSE API TOKEN>" >> .env
+  echo ;
+  echo "DEVELOPER: Please edit .env to contain your clubhouse api token if you wish to run specs"
+  echo ;
+fi
