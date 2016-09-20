@@ -39,9 +39,9 @@ module ClubhouseRuby
     def construct_uri(call_object)
       base_url = ClubhouseRuby::API_URL
       path = call_object.path.map(&:to_s).map { |p| p.gsub('_', '-') }.join('/')
-      object_id = self.params.delete(:id).to_s
-      auth = "?token=#{call_object.token}"
-      URI(base_url + path + object_id + auth)
+      object_id = "/#{self.params.delete(:id)}" if self.params.key?(:id)
+      token = call_object.token
+      URI("#{base_url}#{path}#{object_id}?token=#{token}")
     end
 
     def set_format_header(req)
@@ -55,10 +55,11 @@ module ClubhouseRuby
     end
 
     def wrap_response(res)
-      # TODO
-      # decorate errors
-      # wrap with status
-      res
+      {
+        code: res.code,
+        status: res.message,
+        content: JSON.parse(res.body)
+      }
     end
   end
 end
