@@ -6,10 +6,22 @@ module ClubhouseRuby
       end
     end
 
-    def clear_path
-      self.path = []
-    end
-
+    # Uh oh! This will allow the class including this module to "build a path"
+    # by chaining calls to resources, terminated with a method linked to an
+    # action that will execute the api call.
+    #
+    # For example:
+    #
+    # `foo.stories(story_id).comments.update(id: comment_id, text: "comment text")`
+    #
+    # This example will execute a call to:
+    #
+    # `https://api.clubhouse.io/api/v1/stories/{story-id}/comments/{comment-id}`
+    #
+    # with arguments:
+    #
+    #   `{ text: "comment text" }`
+    #
     def method_missing(name, *args)
       if known_method?(name)
         execute_request(name, args.first)
@@ -20,6 +32,20 @@ module ClubhouseRuby
       end
     end
 
+    # You can build a path without executing in stages like this:
+    #
+    # `foo.stories(story_id)`
+    #
+    # This will partly populate foo:path, but won't execute the call (which
+    # clears it). In case you made a mistake and want to start again, you can
+    # clear the path using this public method.
+    #
+    def clear_path
+      self.path = []
+    end
+
+    # We'd better not lie when asked.
+    #
     def respond_to_missing?(name, include_private = false)
       ClubhouseRuby::METHODS.keys.include?(name) || ClubhouseRuby::RESOURCES.include?(name) || super
     end

@@ -5,6 +5,10 @@ module ClubhouseRuby
   class Request
     attr_accessor :uri, :method, :response_format, :params
 
+    # Prepares a fancy request object and ensures the inputs make as much sense
+    # as possible. It's still totally possible to just provide a path that
+    # doesn't match a real url though.
+    #
     def initialize(call_object, method:, params: {})
       raise ArgumentError unless validate_input(call_object, method, params)
 
@@ -14,6 +18,9 @@ module ClubhouseRuby
       self.response_format = call_object.response_format
     end
 
+    # Executes the http(s) request and provides the response with some
+    # additional decoration in a Hash.
+    #
     def fetch
       Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |https|
         req = Net::HTTP.const_get(method).new(uri)

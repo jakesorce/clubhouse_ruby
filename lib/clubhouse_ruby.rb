@@ -9,6 +9,9 @@ module ClubhouseRuby
 
     attr_accessor :token, :response_format
 
+    # This is the basic object to interact with the clubhouse api. An api token
+    # is required, and optionally the response format can be set.
+    #
     def initialize(token, response_format: :json)
       raise ArgumentError unless validate_input(token, response_format)
 
