@@ -30,8 +30,9 @@ operates as an effective turing machine when lubricated with oil.
 
 ## Usage
 
-This gem is a simple API wrapper. That means you'll need to refer to the API
-documentation to figure out what resources and actions exist.
+This gem is a simple API wrapper. That means you'll need to refer to the
+[API documentation](https://clubhouse.io/api/v1/) to figure out what resources
+ and actions exist.
 
 On the plus side, once you know what you want to do, using this gem should be 
 simple.
@@ -42,14 +43,14 @@ Instantiate an object to interface with the API:
 clubhouse = ClubhouseRuby::Clubhouse.new(<YOUR CLUBHOUSE API TOKEN>)
 ```
 
-The API can also provide responses in CSV format if you're not into json:
+The API can also provide responses in CSV format instead of the default JSON:
 
 ```ruby
 clubhouse = ClubhouseRuby::Clubhouse.new(<YOUR CLUBHOUSE API TOKEN>, response_format: :csv)
 ```
 
-Then call methods on the object matching the resources and action you are interested
-in:
+Then call methods on the object matching the resource(s) and action you are
+interested in:
 
 ```ruby
 clubhouse.epics.list
@@ -138,14 +139,15 @@ clubhouse.clear_path
 # => []
 ```
 
+You don't need to clear the path after a request, as that happens automatically.
+
 Note that the chained methods are always resources (with an id for a parent
 when accessing nested resources) followed by a final "action" or "method" that
-matches the methods in the API documentation.
+matches the methods in the Clubhouse API documentation.
 
 These resources and methods are enumerated in the source code
 [here](https://github.com/PhilipCastiglione/clubhouse_ruby/blob/master/lib/clubhouse_ruby/constants.rb)
-but generally you should find the url you are interested in from the Clubhouse
-API documentation.
+but generally you should find the url you are interested in from the docs.
 
 ## Errors
 
@@ -164,8 +166,9 @@ clubhouse.epics.list
 # }
 ```
 
-Arbitrary combinations not building a path that matches a url the API knows
-about will fail. Note the clubhouse API gives little away, returning forbidden:
+Arbitrary combinations of resources not building a path that matches a url the
+API knows about will fail. Note the clubhouse API gives little away, returning
+forbidden:
 
 ```ruby
 clubhouse.epics(epic_id).stories.list
