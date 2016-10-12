@@ -4,7 +4,7 @@ ClubhouseRuby is a Ruby wrapper of the
 [Clubhouse API](https://clubhouse.io/api/v1/).
 
 Clubhouse is a radical project management tool particularly well suited to
-software development :heart:.
+software development! :heart:
 
 This gem exists to provide a nice interface to the API in your Ruby projects.
 
@@ -20,29 +20,35 @@ And then execute:
 
     $ bundle
 
-Or, install it yourself as:
+Or install it yourself as:
 
     $ gem install clubhouse_ruby
 
-Or, transcribe the code by carving it character by character into the
+Or transcribe the code by carving it character by character into the
 mechanically articulated hand built stone sculpture you've developed that
 operates as an effective turing machine when lubricated with oil.
 
 ## Usage
 
-This gem is a simple wrapper for the API. That means you'll need to refer to the
-API documentation to figure out what resources and actions exist.
+This gem is a simple API wrapper. That means you'll need to refer to the API
+documentation to figure out what resources and actions exist.
 
-On the plus side, using this gem once you know what you want to do should be 
+On the plus side, once you know what you want to do, using this gem should be 
 simple.
 
-Instantiate an object as your API interface:
+Instantiate an object to interface with the API:
 
 ```ruby
 clubhouse = ClubhouseRuby::Clubhouse.new(<YOUR CLUBHOUSE API TOKEN>)
 ```
 
-Then call methods on the object matching the path and action you are interested
+The API can also provide responses in CSV format if you're not into json:
+
+```ruby
+clubhouse = ClubhouseRuby::Clubhouse.new(<YOUR CLUBHOUSE API TOKEN>, response_format: :csv)
+```
+
+Then call methods on the object matching the resources and action you are interested
 in:
 
 ```ruby
@@ -72,7 +78,7 @@ clubhouse.epics.list
 You can build a path to a nested resource:
 
 ```ruby
-clubhouse.projects(<PROJECT_ID>).stories.list
+clubhouse.projects(project_id).stories.list
 # => {
 #   code: "200",
 #   status: "OK",
@@ -114,10 +120,10 @@ clubhouse.projects(<PROJECT_ID>).stories.list
 # }
 ```
 
-You can build a path in stages:
+You can build a path in steps:
 
 ```ruby
-clubhouse.projects(<PROJECT_ID>)
+clubhouse.projects(project_id)
 clubhouse.stories
 clubhouse.list
 # => the same result as above
@@ -126,7 +132,7 @@ clubhouse.list
 If you are building a path and you make a mistake, you can clear the path:
 
 ```ruby
-clubhouse.projects(<PROJECT_ID>)
+clubhouse.projects(project_id)
 clubhouse.epics
 clubhouse.clear_path
 # => []
@@ -141,11 +147,28 @@ These resources and methods are enumerated in the source code
 but generally you should find the url you are interested in from the Clubhouse
 API documentation.
 
-Arbitrary combinations not matching a url the API knows about will of course
-fail. Note the clubhouse API gives little away, returning forbidden:
+## Errors
+
+Errors are passed through from the API relatively undecorated:
 
 ```ruby
-clubhouse.epics(<EPIC_ID>).stories.list
+clubhouse = ClubhouseRuby::Clubhouse.new("unrecognized token")
+clubhouse.epics.list
+# => {
+#   code: "401",
+#   status: "Unauthorized",
+#   content: {
+#     "message" => "Unauthorized",
+#     "tag" => "unauthorized"
+#   }
+# }
+```
+
+Arbitrary combinations not building a path that matches a url the API knows
+about will fail. Note the clubhouse API gives little away, returning forbidden:
+
+```ruby
+clubhouse.epics(epic_id).stories.list
 # => {
 #   code: "403",
 #   status: "Forbidden",
@@ -156,8 +179,8 @@ clubhouse.epics(<EPIC_ID>).stories.list
 # }
 ```
 
-Attempting to access a nested resource without providing the parent id is a bad
-request:
+Attempting to access a nested resource without providing the parent id as an
+argument is a bad request:
 
 ```ruby
 clubhouse.projects.stories.list
@@ -184,14 +207,14 @@ After checking out the repo, run `bin/setup` to install dependencies and
 following the instructions.
 
 Use `rake spec` to run the tests. Except don't, because they won't work for you
-yet.
+yet. TODO!
 
 You can also run `bin/console` for an interactive prompt that will allow you to
 experiment.
 
 ## Contributing
 
-Bug reports and pull requests are (unlikely frankly, but) welcome on GitHub at
+Bug reports and pull requests are (probably unlikely, but) welcome on GitHub at
 https://github.com/philipcastiglione/clubhouse_ruby.
 
 ## License
@@ -201,8 +224,8 @@ The gem is available as open source under the terms of the
 
 ## TODO
 
-- The specs shared context and are generally rushed and bad
+- Actually accept csv response format
 - The specs just use magic numbers based on things I entered in a Clubhouse account to try things out
-- The errors/logs for a user are bad/unclear - specifically, there are a number of internal scenarios we have information about, but the end result is just a 403 from the API.
-- Enchance documentation
+- The specs shared context and are generally rushed and bad
+- The errors/logs for a user are not great and can be improved
 - Publish the gem
