@@ -49,8 +49,10 @@ The API can also provide responses in CSV format instead of the default JSON:
 clubhouse = ClubhouseRuby::Clubhouse.new(<YOUR CLUBHOUSE API TOKEN>, response_format: :csv)
 ```
 
-Then call methods on the object matching the resource(s) and action you are
-interested in:
+Then, call methods on the object matching the resource(s) and action you are
+interested in. For example, if you want to list all available epics, you need to
+access the endpoint at https://api.clubhouse.io/api/v1/epics. The 
+clubhouse_ruby gem uses an explicit action:
 
 ```ruby
 clubhouse.epics.list
@@ -64,22 +66,50 @@ clubhouse.epics.list
 #       "description" => "Outrageously epic.",
 #       "created_at" => "...",
 #       "updated_at" => "...",
-#       "deadline "=> "...",
+#       "deadline "=> nil,
 #       "state" => "to do",
 #       "position" => 1,
 #       "archived" => false,
-#       "follower_ids" => ["..."],
-#       "owner_ids" => ["..."],
-#       "comments" => []
+#       "follower_ids" => [...],
+#       "owner_ids" => [...],
+#       "comments" => [...]
 #      }
 #    ]
 # }
 ```
 
-You can build a path to a nested resource:
+If the endpoint you want requires parameters, say if you wanted to create an
+epic, you provide a hash to the action call following the resource:
 
 ```ruby
-clubhouse.projects(project_id).stories.list
+clubhouse.epics.create(name: "My New Epic", state: "to do")
+# => {
+#   code: "201",
+#   status: "Created",
+#   content: {
+#     "id" => 2,
+#     "name" => "My New Epic",
+#     "description" => "",
+#     "created_at" => "...",
+#     "updated_at" => "...",
+#     "deadline" => nil,
+#     "state" => "to do",
+#     "position" => 2,
+#     "archived" => false,
+#     "follower_ids" => [],
+#     "owner_ids" => [],
+#     "comments" => []
+#   }
+# }
+```
+
+If the endpoint you want is nested, you can build a path by chaining method
+calls, providing any required parent resource id as an argument to that method
+in the chain. For example, if you wanted to list all the stories associated
+with a particular project:
+
+```ruby
+clubhouse.projects(<project_id>).stories.list
 # => {
 #   code: "200",
 #   status: "OK",
@@ -91,15 +121,15 @@ clubhouse.projects(project_id).stories.list
 #       "name" => "Rescue Prince",
 #       "story_type" => "feature",
 #       "description" => "The prince is trapped in a tower and needs freeing.",
-#       "position" => "...",
+#       "position" => 1,
 #       "workflow_state_id" => "...",
-#       "estimate" => "...",
+#       "estimate" => 0,
 #       "updated_at" => "...",
 #       "deadline" => nil,
-#       "project_id" => 1,
+#       "project_id" => <project_id>,
 #       "labels" => [
 #         {
-#           "id" => 21,
+#           "id" => "...",
 #           "name" => "Urgent",
 #           "created_at" => "...",
 #           "updated_at" => "..."
@@ -121,13 +151,14 @@ clubhouse.projects(project_id).stories.list
 # }
 ```
 
-You can build a path in steps:
+You can build a path in steps rather than all at once, and execution is deferred
+until the action call:
 
 ```ruby
-clubhouse.projects(project_id)
+clubhouse.projects(<project_id>)
 clubhouse.stories
 clubhouse.list
-# => the same result as above
+# => as above
 ```
 
 If you are building a path and you make a mistake, you can clear the path:
@@ -139,11 +170,12 @@ clubhouse.clear_path
 # => []
 ```
 
-You don't need to clear the path after a request, as that happens automatically.
+You don't need to clear the path after a complete request, as that happens
+automatically.
 
-Note that the chained methods are always resources (with an id for a parent
-when accessing nested resources) followed by a final "action" or "method" that
-matches the methods in the Clubhouse API documentation.
+Note that the chained methods are always resources (with an id for a parent when
+accessing nested resources) followed by a final action that matches the methods
+in the Clubhouse API documentation.
 
 These resources and methods are enumerated in the source code
 [here](https://github.com/PhilipCastiglione/clubhouse_ruby/blob/master/lib/clubhouse_ruby/constants.rb)
@@ -212,12 +244,12 @@ following the instructions.
 Use `rake spec` to run the tests. Except don't, because they won't work for you
 yet. TODO!
 
-You can also run `bin/console` for an interactive prompt that will allow you to
-experiment.
+Once set up, you can also run `bin/console` for an interactive prompt that will
+allow you to experiment with the wrapper and API responses.
 
 ## Contributing
 
-Bug reports and pull requests are (probably unlikely, but) welcome on GitHub at
+Bug reports and pull requests are entirely welcome on GitHub at
 https://github.com/philipcastiglione/clubhouse_ruby.
 
 ## License
@@ -227,7 +259,9 @@ The gem is available as open source under the terms of the
 
 ## TODO
 
+- Fix the TODOs in the README
 - Actually accept csv response format
+- Can we use VCR for the specs?
 - The specs just use magic numbers based on things I entered in a Clubhouse account to try things out
 - The specs shared context and are generally rushed and bad
 - The errors/logs for a user are not great and can be improved
