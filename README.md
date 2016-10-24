@@ -260,9 +260,7 @@ The gem is available as open source under the terms of the
 ## TODO
 
 - Fix the TODOs in the README
-- Actually accept csv response format
 - Can we use VCR for the specs?
 - The specs just use magic numbers based on things I entered in a Clubhouse account to try things out
 - The specs shared context and are generally rushed and bad
-- The errors/logs for a user are not great and can be improved
 - Publish the gem
