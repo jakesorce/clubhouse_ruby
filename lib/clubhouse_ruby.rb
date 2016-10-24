@@ -13,7 +13,7 @@ module ClubhouseRuby
     # is required, and optionally the response format can be set.
     #
     def initialize(token, response_format: :json)
-      raise ArgumentError unless validate_input(token, response_format)
+      raise ArgumentError unless input_valid?(token, response_format)
 
       self.token = token
       self.response_format = response_format
@@ -21,8 +21,8 @@ module ClubhouseRuby
 
     private
 
-    def validate_input(token, response_format)
-      !token.nil? && ClubhouseRuby::FORMATS.keys.include?(response_format)
+    def input_valid?(token, response_format)
+      !token.nil? && FORMATS.keys.include?(response_format)
     end
   end
 end

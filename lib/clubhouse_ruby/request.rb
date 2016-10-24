@@ -1,5 +1,4 @@
 require 'net/http'
-require 'json'
 
 module ClubhouseRuby
   class Request
@@ -39,12 +38,12 @@ module ClubhouseRuby
         !call_object.path.nil? &&
         !call_object.token.nil? &&
         !call_object.response_format.nil? &&
-        ClubhouseRuby::METHODS.values.include?(method) &&
+        METHODS.values.include?(method) &&
         (params.is_a?(Hash) || params.nil?)
     end
 
     def construct_uri(call_object)
-      base_url = ClubhouseRuby::API_URL
+      base_url = API_URL
       path = call_object.path.map(&:to_s).map { |p| p.gsub('_', '-') }.join('/')
       object_id = "/#{self.params.delete(:id)}" if self.params.key?(:id)
       token = call_object.token
@@ -52,8 +51,8 @@ module ClubhouseRuby
     end
 
     def set_format_header(req)
-      format_header = ClubhouseRuby::FORMATS[response_format][:header]
-      format_content = ClubhouseRuby::FORMATS[response_format][:content]
+      format_header = FORMATS[response_format][:headers][:header]
+      format_content = FORMATS[response_format][:headers][:content]
       req[format_header] = format_content
     end
 
@@ -65,7 +64,7 @@ module ClubhouseRuby
       {
         code: res.code,
         status: res.message,
-        content: JSON.parse(res.body)
+        content: FORMATS[response_format][:parser].parse(res.body)
       }
     end
   end

@@ -47,23 +47,23 @@ module ClubhouseRuby
     # We'd better not lie when asked.
     #
     def respond_to_missing?(name, include_private = false)
-      ClubhouseRuby::METHODS.keys.include?(name) || ClubhouseRuby::RESOURCES.include?(name) || super
+      METHODS.keys.include?(name) || RESOURCES.include?(name) || super
     end
 
     private
 
     def known_method?(name)
-      ClubhouseRuby::METHODS.keys.include?(name)
+      METHODS.keys.include?(name)
     end
 
     def known_resource?(name)
-      ClubhouseRuby::RESOURCES.include?(name)
+      RESOURCES.include?(name)
     end
 
     def execute_request(method, params)
-      req = ClubhouseRuby::Request.new(
+      req = Request.new(
         self, 
-        method: ClubhouseRuby::METHODS[method],
+        method: METHODS[method],
         params: params
       )
       clear_path

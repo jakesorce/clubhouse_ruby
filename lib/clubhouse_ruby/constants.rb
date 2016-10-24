@@ -1,10 +1,19 @@
+require 'json'
+require 'csv'
+
 module ClubhouseRuby
   API_URL = "https://api.clubhouse.io/api/v1/".freeze
 
   # Response formats the clubhouse api knows about
   FORMATS = {
-    json: { header: 'Content-Type', content: 'application/json' },
-    csv: { header: 'Accept', content: 'text/csv' }
+    json: {
+      headers: { header: 'Content-Type', content: 'application/json' },
+      parser: JSON
+    },
+    csv: {
+      headers: { header: 'Accept', content: 'text/csv' },
+      parser: CSV
+    }
   }.freeze
 
   # Action words are nice for our internal api and match the api path too
