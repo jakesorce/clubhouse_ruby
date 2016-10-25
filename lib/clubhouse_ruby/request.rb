@@ -61,10 +61,16 @@ module ClubhouseRuby
     end
 
     def wrap_response(res)
+      begin
+        content = FORMATS[response_format][:parser].parse(res.body) if res.body
+      rescue FORMATS[response_format][:parser]::ParserError
+        content = res.body
+      end
+
       {
         code: res.code,
         status: res.message,
-        content: FORMATS[response_format][:parser].parse(res.body)
+        content: content
       }
     end
   end
