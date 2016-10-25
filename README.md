@@ -1,12 +1,22 @@
 # ClubhouseRuby
 
-ClubhouseRuby is a Ruby wrapper of the
+ClubhouseRuby is a lightweight Ruby wrapper of the
 [Clubhouse API](https://clubhouse.io/api/v1/).
 
-Clubhouse is a radical project management tool particularly well suited to
-software development! :heart:
+[Clubhouse](https://clubhouse.io) is a radical project management tool
+particularly well suited to software development. If you're not familiar with
+them, go check them out! :heart:
 
-This gem exists to provide a nice interface to the API in your Ruby projects.
+This gem is built with the philosophy that a good API wrapper is a simpler
+alternative to a comprehensive client library and can provide a nice interface
+to the API using dynamic Ruby metaprogramming techniques rather than mapping
+functionality from the API to the library piece by piece.
+
+This enables the wrapper to be loosely coupled to the current implementation of
+the API, which makes it more resilient to change. Also, this approach takes much
+less code and maintenance effort, allowing the developer to be lazy. A
+reasonable person might fairly assume this to be the true rationale behind the
+philosophy. They'd be right.
 
 ## Installation
 
@@ -30,7 +40,7 @@ operates as an effective turing machine when lubricated with oil.
 
 ## Usage
 
-This gem is a simple API wrapper. That means you'll need to refer to the
+This gem is a lightweight API wrapper. That means you'll need to refer to the
 [API documentation](https://clubhouse.io/api/v1/) to figure out what resources
  and actions exist.
 
@@ -239,13 +249,23 @@ clubhouse.projects.stories.list
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies and
-following the instructions.
+following the instructions. Specifically, you can choose to provide a genuine
+Clubhouse API token in the `.env` file. This will be important if you want to
+use `bin/console` for an interactive prompt that allows you to experiment with
+the gem and real API responses.
 
-Use `rake spec` to run the tests. Except don't, because they won't work for you
-yet. TODO!
+Use `rake spec` to run the tests. The tests don't make external requests but
+rather use VCR for stubbed responses. If you want to play with the tests and
+get real API responses (perhaps to extend the suite or for a new feature) then
+you'll need to have an API token in the env as described above.
 
-Once set up, you can also run `bin/console` for an interactive prompt that will
-allow you to experiment with the wrapper and API responses.
+Note that the current test suite is far from exhaustive and could do with some
+love.
+
+**NB: If you have implemented a feature that requires a new cassette, make sure
+you change the uri referenced by the cassette you added to remove the API token
+if you have updated the environment to use your token. Otherwise your API token
+will be in publically visible from the code in this repo.**
 
 ## Contributing
 
@@ -256,11 +276,3 @@ https://github.com/philipcastiglione/clubhouse_ruby.
 
 The gem is available as open source under the terms of the
 [MIT License](http://opensource.org/licenses/MIT).
-
-## TODO
-
-- Fix the TODOs in the README
-- Can we use VCR for the specs?
-- The specs just use magic numbers based on things I entered in a Clubhouse account to try things out
-- The specs shared context and are generally rushed and bad
-- Publish the gem
