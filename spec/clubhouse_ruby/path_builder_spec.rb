@@ -1,58 +1,79 @@
 require 'spec_helper'
 
 describe ClubhouseRuby::PathBuilder do
-  let(:call_obj) { ClubhouseRuby::Clubhouse.new(ENV['API_TOKEN']) }
+  let(:new_clubhouse) { ClubhouseRuby::Clubhouse.new(ENV['API_TOKEN']) }
 
+  # since not every example results in an action, we need to clean the path 
   before(:example) do
-    call_obj.clear_path
+    new_clubhouse.clear_path
   end
 
   it 'allows you to build a path to a known resource' do
     resource = ClubhouseRuby::RESOURCES.sample
-    result = call_obj.send(resource)
-    expect(result).to be_a(ClubhouseRuby::Clubhouse)
-    expect(result.path).to eq([resource])
+    clubhouse = new_clubhouse.send(resource)
+
+    expect(clubhouse).to be_a(ClubhouseRuby::Clubhouse)
+    expect(clubhouse.path).to eq([resource])
   end
 
   it 'allows you to add an id to a nested resources parent' do
     resource = ClubhouseRuby::RESOURCES.sample
     id = rand(10000)
-    result = call_obj.send(resource, id)
-    expect(result).to be_a(ClubhouseRuby::Clubhouse)
-    expect(result.path).to eq([resource, id])
+    clubhouse = new_clubhouse.send(resource, id)
+
+    expect(clubhouse).to be_a(ClubhouseRuby::Clubhouse)
+    expect(clubhouse.path).to eq([resource, id])
   end
 
   it 'allows you to clear a partially built path' do
     resource = ClubhouseRuby::RESOURCES.sample
-    result = call_obj.send(resource)
-    result.clear_path
-    expect(result.path).to eq([])
+    clubhouse = new_clubhouse.send(resource)
+    clubhouse.clear_path
+
+    expect(clubhouse.path).to eq([])
   end
 
-  it 'recognizes and executes known methods, ending the path' do
+  it 'recognizes and executes known actions, clearing the path' do
     resource = ClubhouseRuby::RESOURCES.sample
-    method = ClubhouseRuby::METHODS.keys.sample
-
-    result = call_obj.send(resource)
+    action = ClubhouseRuby::ACTIONS.keys.sample
+    clubhouse = new_clubhouse.send(resource)
 
     expect(Net::HTTP).to receive(:start)
 
-    result.send(method)
+    clubhouse.send(action)
 
-    expect(result.path).to eq([])
+    expect(clubhouse.path).to eq([])
   end
 
-  it 'responds to known methods' do
-    method = ClubhouseRuby::METHODS.keys.sample
-    expect(call_obj.respond_to?(method)).to be true
+  it 'recognizes known exceptions, builds the path, then executes' do
+    resource = ClubhouseRuby::RESOURCES.sample
+    exception = ClubhouseRuby::EXCEPTIONS.keys.sample
+    clubhouse = new_clubhouse.send(resource)
+
+    expect(Net::HTTP).to receive(:start)
+
+    clubhouse.send(exception)
+
+    expect(clubhouse.path).to eq([])
+  end
+
+  it 'responds to known actions' do
+    action = ClubhouseRuby::ACTIONS.keys.sample
+
+    expect(new_clubhouse.respond_to?(action)).to be true
   end
 
   it 'responds to known resources' do
     resource = ClubhouseRuby::RESOURCES.sample
-    expect(call_obj.respond_to?(resource)).to be true
+    expect(new_clubhouse.respond_to?(resource)).to be true
+  end
+
+  it 'responds to known exceptions' do
+    resource = ClubhouseRuby::EXCEPTIONS.keys.sample
+    expect(new_clubhouse.respond_to?(resource)).to be true
   end
 
   it 'raises an ArgumentError for unrecognized paths' do
-    expect { call_obj.send(:foo) }.to raise_error(NoMethodError)
+    expect { new_clubhouse.send(:foo) }.to raise_error(NoMethodError)
   end
 end

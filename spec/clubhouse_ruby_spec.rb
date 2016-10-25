@@ -9,12 +9,16 @@ describe ClubhouseRuby do
     expect(ClubhouseRuby::FORMATS).to_not be nil
   end
 
-  it 'has a METHODS constant defining acceptable request methods' do
-    expect(ClubhouseRuby::METHODS).to_not be nil
+  it 'has an ACTIONS constant defining acceptable request actions' do
+    expect(ClubhouseRuby::ACTIONS).to_not be nil
   end
 
   it 'has a RESOURCES constant defining known api resources' do
     expect(ClubhouseRuby::RESOURCES).to_not be nil
+  end
+
+  it 'has an annoying EXCEPTIONS constant defining known api exceptions' do
+    expect(ClubhouseRuby::EXCEPTIONS).to_not be nil
   end
 
   it 'has an API_URL constant defining the base api url' do
