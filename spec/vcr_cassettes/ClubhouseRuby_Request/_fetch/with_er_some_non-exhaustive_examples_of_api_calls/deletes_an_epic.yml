@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.clubhouse.io/api/v1/epics/6
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clubhouse.io
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Access-Control-Expose-Headers:
+      - Database-Time, Activity-Start, Activity-Incomplete, Activity-End, Clubhouse-Organization
+      Clubhouse-Organization:
+      - ''
+      Content-Type:
+      - application/json;charset=UTF-8
+      Database-Time:
+      - '6527535'
+      Date:
+      - Tue, 25 Oct 2016 01:25:26 GMT
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Accept
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 01:25:26 GMT
+recorded_with: VCR 3.0.3

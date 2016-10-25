@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.clubhouse.io/api/v1/projects/5/stories
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clubhouse.io
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Expose-Headers:
+      - Database-Time, Activity-Start, Activity-Incomplete, Activity-End, Clubhouse-Organization
+      Clubhouse-Organization:
+      - ''
+      Content-Type:
+      - application/json;charset=UTF-8
+      Database-Time:
+      - '6528147'
+      Date:
+      - Tue, 25 Oct 2016 02:02:45 GMT
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '931'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"archived":false,"created_at":"2016-09-20T04:47:39Z","id":20,"name":"Reap
+        Rewards","story_type":"feature","description":"Given that you''ve just rescued
+        the princess from her evil kidnappers, you will probably want to enjoy your
+        hearty rewards.","position":12147418112,"workflow_state_id":500000014,"estimate":null,"updated_at":"2016-09-20T04:47:39Z","deadline":null,"project_id":5,"labels":[{"id":21,"name":"Party","created_at":"2016-09-20T04:47:39Z","updated_at":"2016-09-20T04:47:39Z"}],"requested_by_id":"57e0b4eb-d3a0-4e27-8142-8e72a0a2cf98","owner_ids":[],"follower_ids":["57e0b4eb-d3a0-4e27-8142-8e72a0a2cf98"],"epic_id":null,"file_ids":[],"linked_file_ids":[],"comments":[],"tasks":[{"id":22,"description":"Party","position":1,"created_at":"2016-09-20T04:47:39Z","updated_at":"2016-09-20T04:47:39Z","complete":false,"completed_at":null,"story_id":20,"owner_ids":[],"mention_ids":[]},{"id":23,"description":"Don''t
+        tell anyone that you actually organised the whole thing","position":2,"created_at":"2016-09-20T04:47:39Z","updated_at":"2016-09-20T04:47:39Z","complete":false,"completed_at":null,"story_id":20,"owner_ids":[],"mention_ids":[]}],"story_links":[]},{"archived":false,"created_at":"2016-09-20T04:46:23Z","id":15,"name":"Rescue
+        Princess","story_type":"feature","description":"Well, really just go pretend
+        to rescue her, since you arranged her kidnap. Potato potato. Hmm. That doesn''t
+        really work in written form.","position":12147483648,"workflow_state_id":500000014,"estimate":null,"updated_at":"2016-09-20T04:46:23Z","deadline":"2017-05-08T14:00:00Z","project_id":5,"labels":[{"id":16,"name":"Door
+        Bashing","created_at":"2016-09-20T04:46:23Z","updated_at":"2016-09-20T04:46:23Z"},{"id":10,"name":"Goons","created_at":"2016-09-20T04:44:25Z","updated_at":"2016-09-20T04:44:25Z"}],"requested_by_id":"57e0b4eb-d3a0-4e27-8142-8e72a0a2cf98","owner_ids":[],"follower_ids":["57e0b4eb-d3a0-4e27-8142-8e72a0a2cf98"],"epic_id":null,"file_ids":[],"linked_file_ids":[],"comments":[],"tasks":[{"id":17,"description":"Go
+        To Goon Hideout","position":1,"created_at":"2016-09-20T04:46:23Z","updated_at":"2016-09-20T04:46:23Z","complete":false,"completed_at":null,"story_id":15,"owner_ids":[],"mention_ids":[]},{"id":18,"description":"Bash
+        Down Door","position":2,"created_at":"2016-09-20T04:46:23Z","updated_at":"2016-09-20T04:46:23Z","complete":false,"completed_at":null,"story_id":15,"owner_ids":[],"mention_ids":[]},{"id":19,"description":"Take
+        Princess To Castle","position":3,"created_at":"2016-09-20T04:46:23Z","updated_at":"2016-09-20T04:46:23Z","complete":false,"completed_at":null,"story_id":15,"owner_ids":[],"mention_ids":[]}],"story_links":[]},{"archived":false,"created_at":"2016-09-20T04:44:25Z","id":8,"name":"Hire
+        Goons To Kidnap Princess","story_type":"feature","description":"The first
+        part in my nefarious plan.\n\n> Sneaky things are best done sneakily.","position":22147483648,"workflow_state_id":500000011,"estimate":null,"updated_at":"2016-09-20T04:44:25Z","deadline":"2016-12-13T13:00:00Z","project_id":5,"labels":[{"id":10,"name":"Goons","created_at":"2016-09-20T04:44:25Z","updated_at":"2016-09-20T04:44:25Z"},{"id":9,"name":"Hiring","created_at":"2016-09-20T04:44:25Z","updated_at":"2016-09-20T04:44:25Z"}],"requested_by_id":"57e0b4eb-d3a0-4e27-8142-8e72a0a2cf98","owner_ids":[],"follower_ids":["57e0b4eb-d3a0-4e27-8142-8e72a0a2cf98"],"epic_id":null,"file_ids":[],"linked_file_ids":[],"comments":[],"tasks":[{"id":11,"description":"Hire
+        Goons","position":1,"created_at":"2016-09-20T04:44:25Z","updated_at":"2016-09-20T04:44:25Z","complete":false,"completed_at":null,"story_id":8,"owner_ids":[],"mention_ids":[]},{"id":12,"description":"Instruct
+        Goons","position":2,"created_at":"2016-09-20T04:44:25Z","updated_at":"2016-09-20T04:44:25Z","complete":false,"completed_at":null,"story_id":8,"owner_ids":[],"mention_ids":[]},{"id":13,"description":"Cover
+        Tracks","position":3,"created_at":"2016-09-20T04:44:25Z","updated_at":"2016-09-20T04:44:25Z","complete":false,"completed_at":null,"story_id":8,"owner_ids":[],"mention_ids":[]},{"id":14,"description":"Anonymously
+        Inform On Goons","position":4,"created_at":"2016-09-20T04:44:25Z","updated_at":"2016-09-20T04:44:25Z","complete":false,"completed_at":null,"story_id":8,"owner_ids":[],"mention_ids":[]}],"story_links":[]}]'
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 02:02:45 GMT
+recorded_with: VCR 3.0.3
