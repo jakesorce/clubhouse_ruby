@@ -2,19 +2,19 @@ require 'net/http'
 
 module ClubhouseRuby
   class Request
-    attr_accessor :uri, :method, :response_format, :params
+    attr_accessor :uri, :action, :response_format, :params
 
     # Prepares a fancy request object and ensures the inputs make as much sense
     # as possible. It's still totally possible to just provide a path that
     # doesn't match a real url though.
     #
-    def initialize(call_object, method:, params: {})
-      raise ArgumentError unless validate_input(call_object, method, params)
+    def initialize(clubhouse, action:, params: {})
+      raise ArgumentError unless validate_input(clubhouse, action, params)
 
       self.params = params || {}
-      self.uri = construct_uri(call_object)
-      self.method = method
-      self.response_format = call_object.response_format
+      self.uri = construct_uri(clubhouse)
+      self.action = action
+      self.response_format = clubhouse.response_format
     end
 
     # Executes the http(s) request and provides the response with some
@@ -22,7 +22,7 @@ module ClubhouseRuby
     #
     def fetch
       Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |https|
-        req = Net::HTTP.const_get(method).new(uri)
+        req = Net::HTTP.const_get(action).new(uri)
 
         set_body(req)
         set_format_header(req)
@@ -33,20 +33,20 @@ module ClubhouseRuby
 
     private
 
-    def validate_input(call_object, method, params)
-      !call_object.nil? &&
-        !call_object.path.nil? &&
-        !call_object.token.nil? &&
-        !call_object.response_format.nil? &&
-        METHODS.values.include?(method) &&
+    def validate_input(clubhouse, action, params)
+      clubhouse.is_a?(Clubhouse) &&
+        !clubhouse.path.nil? &&
+        !clubhouse.token.nil? &&
+        !clubhouse.response_format.nil? &&
+        ACTIONS.values.include?(action) &&
         (params.is_a?(Hash) || params.nil?)
     end
 
-    def construct_uri(call_object)
+    def construct_uri(clubhouse)
       base_url = API_URL
-      path = call_object.path.map(&:to_s).map { |p| p.gsub('_', '-') }.join('/')
+      path = clubhouse.path.map(&:to_s).map { |p| p.gsub('_', '-') }.join('/')
       object_id = "/#{self.params.delete(:id)}" if self.params.key?(:id)
-      token = call_object.token
+      token = clubhouse.token
       URI("#{base_url}#{path}#{object_id}?token=#{token}")
     end
 

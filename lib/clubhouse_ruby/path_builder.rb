@@ -23,10 +23,13 @@ module ClubhouseRuby
     #   `{ text: "comment text" }`
     #
     def method_missing(name, *args)
-      if known_method?(name)
-        execute_request(name, args.first)
+      if known_action?(name)
+        execute_request(ACTIONS[name], args.first)
       elsif known_resource?(name)
         build_path(name, args.first)
+      elsif known_exception?(name)
+        build_path(EXCEPTIONS[name][:path], nil)
+        execute_request(EXCEPTIONS[name][:action], args.first)
       else
         super
       end
@@ -47,23 +50,30 @@ module ClubhouseRuby
     # We'd better not lie when asked.
     #
     def respond_to_missing?(name, include_private = false)
-      METHODS.keys.include?(name) || RESOURCES.include?(name) || super
+      ACTIONS.keys.include?(name) ||
+        RESOURCES.include?(name) ||
+        EXCEPTIONS.keys.include?(name) ||
+        super
     end
 
     private
 
-    def known_method?(name)
-      METHODS.keys.include?(name)
+    def known_action?(name)
+      ACTIONS.keys.include?(name)
     end
 
     def known_resource?(name)
       RESOURCES.include?(name)
     end
 
-    def execute_request(method, params)
+    def known_exception?(name)
+      EXCEPTIONS.keys.include?(name)
+    end
+
+    def execute_request(action, params)
       req = Request.new(
         self, 
-        method: METHODS[method],
+        action: action,
         params: params
       )
       clear_path

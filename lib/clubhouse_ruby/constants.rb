@@ -17,13 +17,12 @@ module ClubhouseRuby
   }.freeze
 
   # Action words are nice for our internal api and match the api path too
-  METHODS = {
+  ACTIONS = {
     get: :Get,
     update: :Put,
     delete: :Delete,
     list: :Get,
-    create: :Post,
-    search: :Post
+    create: :Post
   }.freeze
 
   # These are the resource for the clubhouse api and can form part of the path
@@ -35,10 +34,25 @@ module ClubhouseRuby
     :projects,
     :story_links,
     :stories,
-    :bulk,
     :tasks,
     :comments,
     :users,
     :workflows
   ].freeze
+
+  # These are the annoying edge cases in the clubhouse api that are don't fit
+  EXCEPTIONS = {
+    search: {
+      path: :search,
+      action: :Post
+    },
+    bulk_create: {
+      path: :bulk,
+      action: :Post
+    },
+    bulk_update: {
+      path: :bulk,
+      action: :Put
+    }
+  }.freeze
 end
