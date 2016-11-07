@@ -50,9 +50,9 @@ module ClubhouseRuby
     # We'd better not lie when asked.
     #
     def respond_to_missing?(name, include_private = false)
-      ACTIONS.keys.include?(name) ||
-        RESOURCES.include?(name) ||
-        EXCEPTIONS.keys.include?(name) ||
+      known_action?(name) ||
+        known_resource?(name) ||
+        known_exception?(name) ||
         super
     end
 
