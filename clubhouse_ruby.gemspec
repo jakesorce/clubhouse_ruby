@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Philip Castiglione"]
   spec.email         = ["philipcastiglione@gmail.com"]
 
-  spec.summary       = %q{A lightweight ruby wrapper for the Clubhouse API: https://clubhouse.io/api/v1}
+  spec.summary       = %q{A lightweight Ruby wrapper for the Clubhouse REST API.}
   spec.homepage      = "https://github.com/PhilipCastiglione/clubhouse_ruby"
   spec.license       = "MIT"
 
