@@ -2,7 +2,7 @@ require 'json'
 require 'csv'
 
 module ClubhouseRuby
-  API_URL = "https://api.clubhouse.io/api/v1/".freeze
+  API_URL = "https://api.clubhouse.io/api/v2/".freeze
 
   # Response formats the clubhouse api knows about
   FORMATS = {
@@ -27,16 +27,18 @@ module ClubhouseRuby
 
   # These are the resource for the clubhouse api and can form part of the path
   RESOURCES = [
+    :categories,
     :epics,
     :files,
     :labels,
     :linked_files,
+    :members,
+    :milestones,
     :projects,
-    :story_links,
+    :repositories,
     :stories,
-    :tasks,
-    :comments,
-    :users,
+    :story_links,
+    :teams,
     :workflows
   ].freeze
 
