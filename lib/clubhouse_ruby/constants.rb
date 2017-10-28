@@ -44,10 +44,6 @@ module ClubhouseRuby
 
   # These are the annoying edge cases in the clubhouse api that are don't fit
   EXCEPTIONS = {
-    search: {
-      path: :search,
-      action: :Post
-    },
     bulk_create: {
       path: :bulk,
       action: :Post
