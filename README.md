@@ -1,7 +1,7 @@
 # ClubhouseRuby
 
 ClubhouseRuby is a lightweight Ruby wrapper of the
-[Clubhouse API](https://clubhouse.io/api/v1/).
+[Clubhouse REST API](https://clubhouse.io/api/rest/v2/).
 
 [Clubhouse](https://clubhouse.io) is a radical project management tool
 particularly well suited to software development. If you're not familiar with
@@ -30,7 +30,7 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
+Or install it globally:
 
     $ gem install clubhouse_ruby
 
@@ -41,7 +41,7 @@ operates as an effective turing machine when lubricated with oil.
 ## Usage
 
 This gem is a lightweight API wrapper. That means you'll need to refer to the
-[API documentation](https://clubhouse.io/api/v1/) to figure out what resources
+[API documentation](https://clubhouse.io/api/rest/v2/) to figure out what resources
  and actions exist.
 
 On the plus side, once you know what you want to do, using this gem should be 
@@ -70,21 +70,33 @@ clubhouse.epics.list
 #   code: "200",
 #   status: "OK",
 #   content: [
-#     {
-#       "id" => 1,
-#       "name" => "An Odyssian Epic",
-#       "description" => "Outrageously epic.",
-#       "created_at" => "...",
-#       "updated_at" => "...",
-#       "deadline "=> nil,
-#       "state" => "to do",
-#       "position" => 1,
-#       "archived" => false,
-#       "follower_ids" => [...],
-#       "owner_ids" => [...],
-#       "comments" => [...]
-#      }
-#    ]
+#    {
+#      "entity_type" => "epic",
+#      "id" => 1,
+#      "external_id" => nil,
+#      "name" => "An Odyssian Epic",
+#      "description" => "Outrageously epic.",
+#      "created_at" => "...",
+#      "updated_at" => "...",
+#      "deadline "=> nil,
+#      "state" => "to do",
+#      "position" => 1,
+#      "started" => false,
+#      "started_at" => nil,
+#      "started_at_override" => nil,
+#      "completed" => false,
+#      "completed_at" => nil,
+#      "completed_at_override" => nil,
+#      "archived" => false,
+#      "labels" => [...],
+#      "milestone_id" => nil,
+#      "follower_ids" => [...],
+#      "owner_ids" => [...],
+#      "project_ids" => [...],
+#      "comments" => [...],
+#      "stats" => {...},
+#     }, ...
+#   ]
 # }
 ```
 
@@ -97,18 +109,12 @@ clubhouse.epics.create(name: "My New Epic", state: "to do")
 #   code: "201",
 #   status: "Created",
 #   content: {
+#     "entity_type" => "epic",
 #     "id" => 2,
+#     "extenal_id" => nil,
 #     "name" => "My New Epic",
 #     "description" => "",
-#     "created_at" => "...",
-#     "updated_at" => "...",
-#     "deadline" => nil,
-#     "state" => "to do",
-#     "position" => 2,
-#     "archived" => false,
-#     "follower_ids" => [],
-#     "owner_ids" => [],
-#     "comments" => []
+#     ...
 #   }
 # }
 ```
@@ -125,38 +131,18 @@ clubhouse.projects(<project_id>).stories.list
 #   status: "OK",
 #   content: [
 #     {
+#       "entity_type" => "story",
 #       "archived" => false,
 #       "created_at" => "...",
+#       "updated_at" => "...",
 #       "id" => 1,
+#       "external_id" => nil,
 #       "name" => "Rescue Prince",
 #       "story_type" => "feature",
 #       "description" => "The prince is trapped in a tower and needs freeing.",
 #       "position" => 1,
-#       "workflow_state_id" => "...",
-#       "estimate" => 0,
-#       "updated_at" => "...",
-#       "deadline" => nil,
-#       "project_id" => <project_id>,
-#       "labels" => [
-#         {
-#           "id" => "...",
-#           "name" => "Urgent",
-#           "created_at" => "...",
-#           "updated_at" => "..."
-#         }
-#       ],
-#       "requested_by_id" => "...",
-#       "owner_ids" => [...],
-#       "follower_ids" => [...],
-#       "epic_id" => "...",
-#       "file_ids" => [...],
-#       "linked_file_ids" => [...],
-#       "comments" => [...],
-#       "tasks" => [...],
-#       "story_links" => [...]
-#     },
-#     {...},
-#     {...}
+#       ...
+#     }, ...
 #   ]
 # }
 ```
@@ -209,20 +195,20 @@ clubhouse.epics.list
 ```
 
 Arbitrary combinations of resources not building a path that matches a url the
-API knows about will fail. Note the clubhouse API gives little away, returning
-forbidden:
+API knows about will fail.
 
 ```ruby
 clubhouse.epics(epic_id).stories.list
 # => {
-#   code: "403",
-#   status: "Forbidden",
+#   code: "404",
+#   status: "Not Found",
 #   content: {
-#     "message" => "Sorry, you do not have access to this resource.",
-#     "tag" => "user_denied_access"
+#     "message" => "Page not Found"
 #   }
 # }
 ```
+
+Note: the v1 API returns forbidden rather than not found.
 
 Attempting to access a nested resource without providing the parent id as an
 argument is a bad request:
@@ -245,6 +231,12 @@ clubhouse.projects.stories.list
 #   }
 # }
 ```
+
+## Version
+
+The currenet version of the clubhouse_ruby gem supports the current version of
+the API, version 2. If you want something that definitely works with v1, use
+version 0.2.0 of clubhouse_ruby.
 
 ## Development
 
