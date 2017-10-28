@@ -234,7 +234,7 @@ clubhouse.projects.stories.list
 
 ## Version
 
-The currenet version of the clubhouse_ruby gem supports the current version of
+The current version of the clubhouse_ruby gem supports the current version of
 the API, version 2. If you want something that definitely works with v1, use
 version 0.2.0 of clubhouse_ruby.
 
