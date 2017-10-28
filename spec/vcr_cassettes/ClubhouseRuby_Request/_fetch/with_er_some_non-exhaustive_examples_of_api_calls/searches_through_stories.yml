@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.clubhouse.io/api/v1/stories/search
+    uri: https://api.clubhouse.io/api/v2/stories/search
     body:
       encoding: UTF-8
-      string: '{"text":"In A Land"}'
+      string: '{"text":"Prince"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -19,31 +19,31 @@ http_interactions:
       - application/json
   response:
     status:
-      code: 201
-      message: Created
+      code: 404
+      message: Not Found
     headers:
       Access-Control-Expose-Headers:
-      - Database-Time, Activity-Start, Activity-Incomplete, Activity-End, Clubhouse-Organization
+      - Database-Time, CH-Paginate-Incomplete, CH-Start-Time, CH-End-Time, Clubhouse-Company,
+        Clubhouse-Organization
+      Clubhouse-Company:
+      - ''
       Clubhouse-Organization:
       - ''
       Content-Type:
-      - application/json;charset=UTF-8
+      - application/json; charset=utf-8
       Database-Time:
-      - '6528435'
+      - '46222897'
       Date:
-      - Tue, 25 Oct 2016 02:22:05 GMT
+      - Sat, 28 Oct 2017 06:50:53 GMT
       Server:
-      - nginx/1.8.0
-      Vary:
-      - Accept
+      - nginx/1.10.3
       Content-Length:
-      - '491'
+      - '28'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '[{"archived":false,"created_at":"2016-10-25T02:22:01Z","id":28,"name":"In
-        A Land","story_type":"feature","description":"","position":12147680256,"workflow_state_id":500000014,"estimate":null,"updated_at":"2016-10-25T02:22:01Z","deadline":null,"project_id":5,"labels":[],"requested_by_id":"57e0b4eb-d3a0-4e27-8142-8e72a0a2cf98","owner_ids":[],"follower_ids":["57e0b4eb-d3a0-4e27-8142-8e72a0a2cf98"],"epic_id":null,"file_ids":[],"linked_file_ids":[],"comments":[],"tasks":[],"story_links":[]}]'
+      string: '{"message":"Page not Found"}'
     http_version: 
-  recorded_at: Tue, 25 Oct 2016 02:22:05 GMT
+  recorded_at: Sat, 28 Oct 2017 06:50:53 GMT
 recorded_with: VCR 3.0.3

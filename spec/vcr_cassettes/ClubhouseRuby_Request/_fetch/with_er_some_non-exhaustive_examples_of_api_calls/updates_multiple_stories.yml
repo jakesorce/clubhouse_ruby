@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.clubhouse.io/api/v1/stories/bulk
+    uri: https://api.clubhouse.io/api/v2/stories/bulk
     body:
       encoding: UTF-8
       string: '{"story_ids":[29,30],"archived":true}'
@@ -23,28 +23,31 @@ http_interactions:
       message: OK
     headers:
       Access-Control-Expose-Headers:
-      - Database-Time, Activity-Start, Activity-Incomplete, Activity-End, Clubhouse-Organization
+      - Database-Time, CH-Paginate-Incomplete, CH-Start-Time, CH-End-Time, Clubhouse-Company,
+        Clubhouse-Organization
+      Clubhouse-Company:
+      - ''
       Clubhouse-Organization:
       - ''
       Content-Type:
       - application/json;charset=UTF-8
       Database-Time:
-      - '6528541'
+      - '46222890'
       Date:
-      - Tue, 25 Oct 2016 02:31:14 GMT
+      - Sat, 28 Oct 2017 06:50:05 GMT
       Server:
-      - nginx/1.8.0
+      - nginx/1.10.3
       Vary:
       - Accept-Encoding
       Content-Length:
-      - '332'
+      - '394'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '[{"archived":true,"created_at":"2016-10-25T02:25:58Z","id":29,"name":"Once
-        Upon","story_type":"feature","description":"","position":12147745792,"workflow_state_id":500000014,"estimate":null,"updated_at":"2016-10-25T02:31:13Z","deadline":null,"project_id":5,"labels":[],"requested_by_id":"57e0b4eb-d3a0-4e27-8142-8e72a0a2cf98","owner_ids":[],"follower_ids":["57e0b4eb-d3a0-4e27-8142-8e72a0a2cf98"],"epic_id":null,"file_ids":[],"linked_file_ids":[],"comments":[],"tasks":[],"story_links":[]},{"archived":true,"created_at":"2016-10-25T02:25:59Z","id":30,"name":"A
-        Time","story_type":"feature","description":"","position":12147811328,"workflow_state_id":500000014,"estimate":null,"updated_at":"2016-10-25T02:31:13Z","deadline":null,"project_id":5,"labels":[],"requested_by_id":"57e0b4eb-d3a0-4e27-8142-8e72a0a2cf98","owner_ids":[],"follower_ids":["57e0b4eb-d3a0-4e27-8142-8e72a0a2cf98"],"epic_id":null,"file_ids":[],"linked_file_ids":[],"comments":[],"tasks":[],"story_links":[]}]'
+      string: '[{"entity_type":"story","archived":true,"created_at":"2016-10-25T02:25:58Z","updated_at":"2016-10-25T02:31:13Z","id":29,"external_id":null,"name":"Once
+        Upon","story_type":"feature","position":12147745792,"workflow_state_id":500000014,"moved_at":null,"started":false,"started_at":null,"started_at_override":null,"completed":false,"completed_at":null,"completed_at_override":null,"blocker":false,"blocked":false,"estimate":null,"deadline":null,"project_id":5,"labels":[],"requested_by_id":"57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef","owner_ids":[],"follower_ids":["57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef"],"epic_id":null,"story_links":[],"comment_ids":[],"file_ids":[],"linked_file_ids":[],"task_ids":[]},{"entity_type":"story","archived":true,"created_at":"2016-10-25T02:25:59Z","updated_at":"2016-10-25T02:31:13Z","id":30,"external_id":null,"name":"A
+        Time","story_type":"feature","position":12147811328,"workflow_state_id":500000014,"moved_at":null,"started":false,"started_at":null,"started_at_override":null,"completed":false,"completed_at":null,"completed_at_override":null,"blocker":false,"blocked":false,"estimate":null,"deadline":null,"project_id":5,"labels":[],"requested_by_id":"57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef","owner_ids":[],"follower_ids":["57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef"],"epic_id":null,"story_links":[],"comment_ids":[],"file_ids":[],"linked_file_ids":[],"task_ids":[]}]'
     http_version: 
-  recorded_at: Tue, 25 Oct 2016 02:31:14 GMT
+  recorded_at: Sat, 28 Oct 2017 06:50:05 GMT
 recorded_with: VCR 3.0.3

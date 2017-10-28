@@ -39,19 +39,19 @@ describe ClubhouseRuby::Request do
 
         expect(clubhouse[:code]).to eq('200')
         expect(clubhouse[:status]).to eq('OK')
-        expect(clubhouse[:content].first['id']).to eq(6)
-        expect(clubhouse[:content].first['name']).to eq('An Odyssian Epic')
-        expect(clubhouse[:content].last['id']).to eq(24)
-        expect(clubhouse[:content].last['name']).to eq('My New Epic')
+        expect(clubhouse[:content].first['id']).to eq(24)
+        expect(clubhouse[:content].first['name']).to eq('My New Epic')
+        expect(clubhouse[:content].last['id']).to eq(34)
+        expect(clubhouse[:content].last['name']).to eq('EEEEEEPIC')
       end
 
       it 'gets an epic', :vcr do
-        clubhouse = new_clubhouse.epics.get(id: 6)
+        clubhouse = new_clubhouse.epics.get(id: 24)
 
         expect(clubhouse[:code]).to eq('200')
         expect(clubhouse[:status]).to eq('OK')
-        expect(clubhouse[:content]['id']).to eq(6)
-        expect(clubhouse[:content]['name']).to eq('An Odyssian Epic')
+        expect(clubhouse[:content]['id']).to eq(24)
+        expect(clubhouse[:content]['name']).to eq('My New Epic')
       end
 
       it 'creates an epic', :vcr do
@@ -59,13 +59,13 @@ describe ClubhouseRuby::Request do
 
         expect(clubhouse[:code]).to eq('201')
         expect(clubhouse[:status]).to eq('Created')
-        expect(clubhouse[:content]['id']).to eq(25)
+        expect(clubhouse[:content]['id']).to eq(38)
         expect(clubhouse[:content]['name']).to eq('EEEEEEPIC')
         expect(clubhouse[:content]['state']).to eq('to do')
       end
 
       it 'updates an epic', :vcr do
-        clubhouse = new_clubhouse.epics.update(id: 6, state: 'in progress')
+        clubhouse = new_clubhouse.epics.update(id: 24, state: 'in progress')
 
         expect(clubhouse[:code]).to eq('200')
         expect(clubhouse[:status]).to eq('OK')
@@ -73,7 +73,7 @@ describe ClubhouseRuby::Request do
       end
 
       it 'deletes an epic', :vcr do
-        clubhouse = new_clubhouse.epics.delete(id: 6)
+        clubhouse = new_clubhouse.epics.delete(id: 24)
 
         expect(clubhouse[:code]).to eq('204')
         expect(clubhouse[:status]).to eq('No Content')
@@ -84,7 +84,7 @@ describe ClubhouseRuby::Request do
 
         expect(clubhouse[:code]).to eq('404')
         expect(clubhouse[:status]).to eq('Not Found')
-        expect(clubhouse[:content]).to eq('Resource not found.')
+        expect(clubhouse[:content]).to eq({"message"=>"Resource not found."})
       end
 
       it 'reports errors for bad params', :vcr do
@@ -110,7 +110,7 @@ describe ClubhouseRuby::Request do
 
         expect(clubhouse[:code]).to eq('200')
         expect(clubhouse[:status]).to eq('OK')
-        expect(clubhouse[:content].count).to eq(3)
+        expect(clubhouse[:content].count).to eq(12)
         expect(clubhouse[:content].first['id']).to eq(20)
         expect(clubhouse[:content].first['name']).to eq('Reap Rewards')
       end
@@ -126,7 +126,7 @@ describe ClubhouseRuby::Request do
         expect(clubhouse[:code]).to eq('201')
         expect(clubhouse[:status]).to eq('Created')
         expect(clubhouse[:content].count).to eq(3)
-        expect(clubhouse[:content].first['id']).to eq(26)
+        expect(clubhouse[:content].first['id']).to eq(39)
         expect(clubhouse[:content].first['name']).to eq('Once Upon')
       end
 
@@ -142,15 +142,6 @@ describe ClubhouseRuby::Request do
         expect(clubhouse[:content].count).to eq(2)
         expect(clubhouse[:content].first['id']).to eq(29)
         expect(clubhouse[:content].first['archived']).to eq(true)
-      end
-
-      it 'searches through stories', :vcr do
-        clubhouse = new_clubhouse.stories.search(text: "In A Land")
-
-        expect(clubhouse[:code]).to eq('201')
-        expect(clubhouse[:status]).to eq('Created')
-        expect(clubhouse[:content].count).to eq(1)
-        expect(clubhouse[:content].first['id']).to eq(28)
       end
     end
   end

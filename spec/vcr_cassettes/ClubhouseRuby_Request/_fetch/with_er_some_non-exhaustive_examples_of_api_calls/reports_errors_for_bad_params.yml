@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.clubhouse.io/api/v1/epics
+    uri: https://api.clubhouse.io/api/v2/epics
     body:
       encoding: UTF-8
       string: '{"foo":"bar"}'
@@ -23,17 +23,20 @@ http_interactions:
       message: Bad Request
     headers:
       Access-Control-Expose-Headers:
-      - Database-Time, Activity-Start, Activity-Incomplete, Activity-End, Clubhouse-Organization
+      - Database-Time, CH-Paginate-Incomplete, CH-Start-Time, CH-End-Time, Clubhouse-Company,
+        Clubhouse-Organization
+      Clubhouse-Company:
+      - ''
       Clubhouse-Organization:
       - ''
       Content-Type:
       - application/json;charset=UTF-8
       Database-Time:
-      - '6528363'
+      - '46222857'
       Date:
-      - Tue, 25 Oct 2016 02:17:26 GMT
+      - Sat, 28 Oct 2017 06:49:13 GMT
       Server:
-      - nginx/1.8.0
+      - nginx/1.10.3
       Vary:
       - Accept
       Content-Length:
@@ -44,5 +47,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"message":"The request included invalid or missing parameters.","errors":{"name":"missing-required-key","foo":"disallowed-key"}}'
     http_version: 
-  recorded_at: Tue, 25 Oct 2016 02:17:26 GMT
+  recorded_at: Sat, 28 Oct 2017 06:49:13 GMT
 recorded_with: VCR 3.0.3
