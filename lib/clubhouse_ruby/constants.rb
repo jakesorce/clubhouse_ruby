@@ -39,7 +39,9 @@ module ClubhouseRuby
     :stories,
     :story_links,
     :teams,
-    :workflows
+    :workflows,
+    :tasks,
+    :comments
   ].freeze
 
   # These are the annoying edge cases in the clubhouse api that are don't fit
