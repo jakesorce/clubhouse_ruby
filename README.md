@@ -44,7 +44,7 @@ This gem is a lightweight API wrapper. That means you'll need to refer to the
 [API documentation](https://clubhouse.io/api/rest/v2/) to figure out what resources
  and actions exist.
 
-On the plus side, once you know what you want to do, using this gem should be 
+On the plus side, once you know what you want to do, using this gem should be
 simple.
 
 Instantiate an object to interface with the API:
@@ -61,7 +61,7 @@ clubhouse = ClubhouseRuby::Clubhouse.new(<YOUR CLUBHOUSE API TOKEN>, response_fo
 
 Then, call methods on the object matching the resource(s) and action you are
 interested in. For example, if you want to list all available epics, you need to
-access the endpoint at https://api.clubhouse.io/api/v1/epics. The 
+access the endpoint at https://api.clubhouse.io/api/v1/epics. The
 clubhouse_ruby gem uses an explicit action:
 
 ```ruby
@@ -144,6 +144,28 @@ clubhouse.projects(<project_id>).stories.list
 #       ...
 #     }, ...
 #   ]
+# }
+```
+
+You can search stories, using standard Clubhouse [search operators](https://help.clubhouse.io/hc/en-us/articles/360000046646-Search-Operators):
+
+```ruby
+clubhouse.search_stories(page_size: 25, query: 'state:500000016')
+# => {
+#   code: "200",
+#   status: "OK",
+#   content: {
+#     "next" => "/api/v2/search/stories?query=state%3A500000016&page_size=25&next=a8acc6577548df7a213272f7f9f617bcb1f8a831~24",
+#     "data" => [
+#       {
+#         "entity_type" => "story",
+#         "archived" => false,
+#         "created_at" => "...",
+#         "updated_at" => "...",
+#         ...
+#       }, ...
+#     ]
+#   }
 # }
 ```
 

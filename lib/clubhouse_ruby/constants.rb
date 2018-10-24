@@ -53,6 +53,10 @@ module ClubhouseRuby
     bulk_update: {
       path: :bulk,
       action: :Put
+    },
+    search_stories: {
+      path: 'search/stories',
+      action: :Get
     }
   }.freeze
 end

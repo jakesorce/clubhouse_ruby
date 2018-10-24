@@ -143,6 +143,20 @@ describe ClubhouseRuby::Request do
         expect(clubhouse[:content].first['id']).to eq(29)
         expect(clubhouse[:content].first['archived']).to eq(true)
       end
+
+      it 'searches stories', :vcr do
+        params = {
+          query: '!is:archived ',
+          page_size: 5
+        }
+        clubhouse = new_clubhouse.search_stories(params)
+
+        expect(clubhouse[:code]).to eq('200')
+        expect(clubhouse[:status]).to eq('OK')
+        expect(clubhouse[:content]['data'].count).to eq(5)
+        expect(clubhouse[:content]['data'].first['id']).to eq(32)
+        expect(clubhouse[:content]['data'].first['archived']).to eq(false)
+      end
     end
   end
 end
