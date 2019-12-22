@@ -1,7 +1,7 @@
 # ClubhouseRuby
 
 ClubhouseRuby is a lightweight Ruby wrapper of the
-[Clubhouse REST API](https://clubhouse.io/api/rest/v2/).
+[Clubhouse REST API](https://clubhouse.io/api/rest/v3/).
 
 [Clubhouse](https://clubhouse.io) is a radical project management tool
 particularly well suited to software development. If you're not familiar with
@@ -41,7 +41,7 @@ operates as an effective turing machine when lubricated with oil.
 ## Usage
 
 This gem is a lightweight API wrapper. That means you'll need to refer to the
-[API documentation](https://clubhouse.io/api/rest/v2/) to figure out what resources
+[API documentation](https://clubhouse.io/api/rest/v3/) to figure out what resources
  and actions exist.
 
 On the plus side, once you know what you want to do, using this gem should be
@@ -155,7 +155,7 @@ clubhouse.search_stories(page_size: 25, query: 'state:500000016')
 #   code: "200",
 #   status: "OK",
 #   content: {
-#     "next" => "/api/v2/search/stories?query=state%3A500000016&page_size=25&next=a8acc6577548df7a213272f7f9f617bcb1f8a831~24",
+#     "next" => "/api/v3/search/stories?query=state%3A500000016&page_size=25&next=a8acc6577548df7a213272f7f9f617bcb1f8a831~24",
 #     "data" => [
 #       {
 #         "entity_type" => "story",
@@ -257,8 +257,12 @@ clubhouse.projects.stories.list
 ## Version
 
 The current version of the clubhouse_ruby gem supports the current version of
-the API, version 2. If you want something that definitely works with v1, use
-version 0.2.0 of clubhouse_ruby.
+the API, version 3.
+
+If you want something that definitely works with:
+
+* v1, use version 0.2.0 of clubhouse_ruby
+* v2, use version 0.3.0 of clubhouse_ruby
 
 ## Development
 

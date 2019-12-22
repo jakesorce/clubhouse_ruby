@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.clubhouse.io/api/v2/epics/24
+    uri: https://api.clubhouse.io/api/v3/epics/25
     body:
       encoding: UTF-8
       string: "{}"
@@ -22,28 +22,26 @@ http_interactions:
       code: 204
       message: No Content
     headers:
-      Access-Control-Expose-Headers:
-      - Database-Time, CH-Paginate-Incomplete, CH-Start-Time, CH-End-Time, Clubhouse-Company,
-        Clubhouse-Organization
+      Date:
+      - Sun, 22 Dec 2019 05:58:24 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept
+      Database-Time:
+      - '405438051'
       Clubhouse-Company:
       - ''
       Clubhouse-Organization:
       - ''
-      Content-Type:
-      - application/json;charset=UTF-8
-      Database-Time:
-      - '46222852'
-      Date:
-      - Sat, 28 Oct 2017 06:48:37 GMT
-      Server:
-      - nginx/1.10.3
-      Vary:
-      - Accept
-      Connection:
-      - keep-alive
+      Access-Control-Expose-Headers:
+      - Database-Time, CH-Paginate-Incomplete, CH-Start-Time, CH-End-Time, Clubhouse-Company,
+        Clubhouse-Organization
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Sat, 28 Oct 2017 06:48:38 GMT
+  recorded_at: Sun, 22 Dec 2019 05:58:24 GMT
 recorded_with: VCR 3.0.3
