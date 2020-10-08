@@ -30,6 +30,7 @@ module ClubhouseRuby
     :categories,
     :epics,
     :files,
+    :iterations,
     :labels,
     :linked_files,
     :members,
