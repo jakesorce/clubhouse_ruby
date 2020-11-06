@@ -28,6 +28,7 @@ module ClubhouseRuby
   # These are the resource for the clubhouse api and can form part of the path
   RESOURCES = [
     :categories,
+    :entity_templates,
     :epics,
     :files,
     :iterations,
