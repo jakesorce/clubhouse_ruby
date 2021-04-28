@@ -43,7 +43,8 @@ module ClubhouseRuby
     :teams,
     :workflows,
     :tasks,
-    :comments
+    :comments,
+    :groups
   ].freeze
 
   # These are the annoying edge cases in the clubhouse api that are don't fit
