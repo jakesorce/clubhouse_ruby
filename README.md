@@ -42,7 +42,7 @@ operates as an effective turing machine when lubricated with oil.
 
 This gem is a lightweight API wrapper. That means you'll need to refer to the
 [API documentation](https://clubhouse.io/api/rest/v3/) to figure out what resources
- and actions exist.
+and actions exist.
 
 On the plus side, once you know what you want to do, using this gem should be
 simple.
@@ -196,7 +196,7 @@ accessing nested resources) followed by a final action that matches the methods
 in the Clubhouse API documentation.
 
 These resources and methods are enumerated in the source code
-[here](https://github.com/PhilipCastiglione/clubhouse_ruby/blob/master/lib/clubhouse_ruby/constants.rb)
+[here](https://github.com/jakesorce/clubhouse_ruby/blob/master/lib/clubhouse_ruby/constants.rb)
 but generally you should find the url you are interested in from the docs.
 
 ## Errors
@@ -261,8 +261,8 @@ the API, version 3.
 
 If you want something that definitely works with:
 
-* v1, use version 0.2.0 of clubhouse_ruby
-* v2, use version 0.3.0 of clubhouse_ruby
+- v1, use version 0.2.0 of clubhouse_ruby
+- v2, use version 0.3.0 of clubhouse_ruby
 
 ## Development
 
