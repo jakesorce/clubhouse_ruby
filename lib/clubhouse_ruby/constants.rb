@@ -34,6 +34,7 @@ module ClubhouseRuby
     :iterations,
     :labels,
     :linked_files,
+    :member,
     :members,
     :milestones,
     :projects,
