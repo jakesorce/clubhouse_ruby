@@ -288,7 +288,7 @@ will be in publically visible from the code in this repo.**
 ## Contributing
 
 Bug reports and pull requests are entirely welcome on GitHub at
-https://github.com/philipcastiglione/clubhouse_ruby.
+https://github.com/jakesorce/clubhouse_ruby.
 
 ## License
 
