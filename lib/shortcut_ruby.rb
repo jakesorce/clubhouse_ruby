@@ -1,15 +1,15 @@
-require "clubhouse_ruby/version"
-require "clubhouse_ruby/constants"
-require "clubhouse_ruby/path_builder"
-require "clubhouse_ruby/request"
+require "shortcut_ruby/version"
+require "shortcut_ruby/constants"
+require "shortcut_ruby/path_builder"
+require "shortcut_ruby/request"
 
-module ClubhouseRuby
-  class Clubhouse
+module ShortcutRuby
+  class Shortcut
     include PathBuilder
 
     attr_accessor :token, :response_format
 
-    # This is the basic object to interact with the clubhouse api. An api token
+    # This is the basic object to interact with the shortcut api. An api token
     # is required, and optionally the response format can be set.
     #
     def initialize(token, response_format: :json)

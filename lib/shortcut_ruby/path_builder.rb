@@ -1,4 +1,4 @@
-module ClubhouseRuby
+module ShortcutRuby
   module PathBuilder
     def self.included(_)
       class_exec do
@@ -16,7 +16,7 @@ module ClubhouseRuby
     #
     # This example will execute a call to:
     #
-    # `https://api.clubhouse.io/api/v3/stories/{story-id}/comments/{comment-id}`
+    # `https://api.app.shortcut.com/api/v3/stories/{story-id}/comments/{comment-id}`
     #
     # with arguments:
     #
@@ -72,7 +72,7 @@ module ClubhouseRuby
 
     def execute_request(action, params)
       req = Request.new(
-        self, 
+        self,
         action: action,
         params: params
       )

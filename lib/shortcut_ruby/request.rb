@@ -1,6 +1,6 @@
 require 'net/http'
 
-module ClubhouseRuby
+module ShortcutRuby
   class Request
     attr_accessor :uri, :action, :response_format, :params
 
@@ -8,13 +8,13 @@ module ClubhouseRuby
     # as possible. It's still totally possible to just provide a path that
     # doesn't match a real url though.
     #
-    def initialize(clubhouse, action:, params: {})
-      raise ArgumentError unless validate_input(clubhouse, action, params)
+    def initialize(shortcut, action:, params: {})
+      raise ArgumentError unless validate_input(shortcut, action, params)
 
       self.params = params || {}
-      self.uri = construct_uri(clubhouse)
+      self.uri = construct_uri(shortcut)
       self.action = action
-      self.response_format = clubhouse.response_format
+      self.response_format = shortcut.response_format
     end
 
     # Executes the http(s) request and provides the response with some
@@ -33,20 +33,20 @@ module ClubhouseRuby
 
     private
 
-    def validate_input(clubhouse, action, params)
-      clubhouse.is_a?(Clubhouse) &&
-        !clubhouse.path.nil? &&
-        !clubhouse.token.nil? &&
-        !clubhouse.response_format.nil? &&
+    def validate_input(shortcut, action, params)
+      shortcut.is_a?(Shortcut) &&
+        !shortcut.path.nil? &&
+        !shortcut.token.nil? &&
+        !shortcut.response_format.nil? &&
         ACTIONS.values.include?(action) &&
         (params.is_a?(Hash) || params.nil?)
     end
 
-    def construct_uri(clubhouse)
+    def construct_uri(shortcut)
       base_url = API_URL
-      path = clubhouse.path.map(&:to_s).map { |p| p.gsub('_', '-') }.join('/')
+      path = shortcut.path.map(&:to_s).map { |p| p.gsub('_', '-') }.join('/')
       object_id = "/#{self.params.delete(:id)}" if self.params.key?(:id)
-      token = clubhouse.token
+      token = shortcut.token
       URI("#{base_url}#{path}#{object_id}?token=#{token}")
     end
 

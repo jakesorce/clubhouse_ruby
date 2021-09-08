@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in clubhouse_ruby.gemspec
+# Specify your gem's dependencies in shortcut_ruby.gemspec
 gemspec

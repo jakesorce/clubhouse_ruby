@@ -1,8 +1,8 @@
 ---
 http_interactions:
 - request:
-    method: delete
-    uri: https://api.clubhouse.io/api/v3/epics/25
+    method: get
+    uri: https://api.app.shortcut.com/api/v3/epics/25
     body:
       encoding: UTF-8
       string: "{}"
@@ -14,34 +14,36 @@ http_interactions:
       User-Agent:
       - Ruby
       Host:
-      - api.clubhouse.io
+      - api.app.shortcut.com
       Content-Type:
       - application/json
   response:
     status:
-      code: 204
-      message: No Content
+      code: 404
+      message: Not Found
     headers:
       Date:
-      - Sun, 22 Dec 2019 05:58:24 GMT
+      - Sun, 22 Dec 2019 05:58:26 GMT
       Content-Type:
-      - application/json;charset=utf-8
+      - application/json
+      Content-Length:
+      - '33'
       Connection:
       - keep-alive
       Vary:
       - Accept
       Database-Time:
       - '405438051'
-      Clubhouse-Company:
+      Shortcut-Company:
       - ''
-      Clubhouse-Organization:
+      Shortcut-Organization:
       - ''
       Access-Control-Expose-Headers:
-      - Database-Time, CH-Paginate-Incomplete, CH-Start-Time, CH-End-Time, Clubhouse-Company,
-        Clubhouse-Organization
+      - Database-Time, SC-Paginate-Incomplete, SC-Start-Time, SC-End-Time, Shortcut-Company,
+        Shortcut-Organization
     body:
       encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Sun, 22 Dec 2019 05:58:24 GMT
+      string: '{"message":"Resource not found."}'
+    http_version:
+  recorded_at: Sun, 22 Dec 2019 05:58:26 GMT
 recorded_with: VCR 3.0.3

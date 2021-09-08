@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "clubhouse_ruby"
+require "shortcut_ruby"
 require "dotenv"
 require "irb"
 

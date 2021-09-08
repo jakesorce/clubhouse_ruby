@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.clubhouse.io/api/v3/epics/25
+    uri: https://api.app.shortcut.com/api/v3/epics/25
     body:
       encoding: UTF-8
       string: "{}"
@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - Ruby
       Host:
-      - api.clubhouse.io
+      - api.app.shortcut.com
       Content-Type:
       - application/json
   response:
@@ -34,17 +34,17 @@ http_interactions:
       - Accept
       Database-Time:
       - '405438034'
-      Clubhouse-Company:
+      Shortcut-Company:
       - ''
-      Clubhouse-Organization:
+      Shortcut-Organization:
       - ''
       Access-Control-Expose-Headers:
-      - Database-Time, CH-Paginate-Incomplete, CH-Start-Time, CH-End-Time, Clubhouse-Company,
-        Clubhouse-Organization
+      - Database-Time, SC-Paginate-Incomplete, SC-Start-Time, SC-End-Time, Shortcut-Company,
+        Shortcut-Organization
     body:
       encoding: UTF-8
       string: '{"description":"","archived":false,"started":false,"entity_type":"epic","labels":[],"external_tickets":[],"mention_ids":[],"member_mention_ids":[],"project_ids":[],"completed_at_override":null,"started_at":null,"completed_at":null,"name":"EEEEEEPIC","completed":false,"comments":[],"state":"to
         do","milestone_id":null,"requested_by_id":"57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef","epic_state_id":500000017,"started_at_override":null,"updated_at":"2016-10-25T01:25:24Z","group_mention_ids":[],"support_tickets":[],"follower_ids":[],"owner_ids":[],"external_id":null,"id":25,"position":3,"deadline":null,"stats":{"num_points_done":0,"num_stories_unstarted":0,"last_story_update":null,"num_points_started":0,"num_points_unstarted":0,"num_stories_started":0,"num_stories_unestimated":0,"num_points":0,"num_stories_done":0},"created_at":"2016-10-25T01:25:24Z"}'
-    http_version: 
+    http_version:
   recorded_at: Sun, 22 Dec 2019 05:57:02 GMT
 recorded_with: VCR 3.0.3

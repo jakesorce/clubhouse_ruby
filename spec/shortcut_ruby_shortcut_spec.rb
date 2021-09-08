@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ClubhouseRuby::Clubhouse do
+describe ShortcutRuby::Shortcut do
   describe ".new" do
     it 'requires an authentication token' do
       expect { described_class.new }.to raise_error(ArgumentError)

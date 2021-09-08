@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.clubhouse.io/api/v3/search/stories
+    uri: https://api.app.shortcut.com/api/v3/search/stories
     body:
       encoding: UTF-8
       string: '{"query":"!is:archived ","page_size":5}'
@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - Ruby
       Host:
-      - api.clubhouse.io
+      - api.app.shortcut.com
       Content-Type:
       - application/json
   response:
@@ -34,33 +34,33 @@ http_interactions:
       - Accept, Accept-Encoding
       Database-Time:
       - '405438379'
-      Clubhouse-Company:
+      Shortcut-Company:
       - ''
-      Clubhouse-Organization:
+      Shortcut-Organization:
       - ''
       Access-Control-Expose-Headers:
-      - Database-Time, CH-Paginate-Incomplete, CH-Start-Time, CH-End-Time, Clubhouse-Company,
-        Clubhouse-Organization
+      - Database-Time, SC-Paginate-Incomplete, SC-Start-Time, SC-End-Time, Shortcut-Company,
+        Shortcut-Organization
     body:
       encoding: ASCII-8BIT
-      string: '{"next":null,"data":[{"app_url":"https:\/\/app.clubhouse.io\/philipcastiglione\/story\/20","description":"Given
+      string: '{"next":null,"data":[{"app_url":"https:\/\/app.shortcut.com\/philipcastiglione\/story\/20","description":"Given
         that you''ve just rescued the princess from her evil kidnappers, you will
         probably want to enjoy your hearty rewards.","archived":false,"started":false,"story_links":[],"entity_type":"story","labels":[{"description":null,"archived":false,"entity_type":"label","color":null,"name":"Party","updated_at":"2016-09-20T04:47:39Z","external_id":null,"id":21,"created_at":"2016-09-20T04:47:39Z"}],"external_tickets":[],"mention_ids":[],"member_mention_ids":[],"story_type":"feature","linked_files":[],"completed_at_override":null,"started_at":null,"completed_at":null,"name":"Reap
         Rewards","completed":false,"comments":[],"blocker":false,"branches":[],"epic_id":null,"previous_iteration_ids":[],"requested_by_id":"57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef","iteration_id":null,"tasks":[{"description":"Party","entity_type":"story-task","story_id":20,"mention_ids":[],"member_mention_ids":[],"completed_at":null,"updated_at":"2016-09-20T04:47:39Z","group_mention_ids":[],"owner_ids":[],"external_id":null,"id":22,"position":1,"complete":false,"created_at":"2016-09-20T04:47:39Z"},{"description":"Don''t
-        tell anyone that you actually organised the whole thing","entity_type":"story-task","story_id":20,"mention_ids":[],"member_mention_ids":[],"completed_at":null,"updated_at":"2016-09-20T04:47:39Z","group_mention_ids":[],"owner_ids":[],"external_id":null,"id":23,"position":2,"complete":false,"created_at":"2016-09-20T04:47:39Z"}],"started_at_override":null,"workflow_state_id":500000014,"updated_at":"2016-09-20T04:47:39Z","group_mention_ids":[],"support_tickets":[],"follower_ids":["57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef"],"owner_ids":[],"external_id":null,"id":20,"estimate":null,"commits":[],"files":[],"position":12147418112,"blocked":false,"project_id":5,"deadline":null,"created_at":"2016-09-20T04:47:39Z","moved_at":null},{"app_url":"https:\/\/app.clubhouse.io\/philipcastiglione\/story\/15","description":"Well,
+        tell anyone that you actually organised the whole thing","entity_type":"story-task","story_id":20,"mention_ids":[],"member_mention_ids":[],"completed_at":null,"updated_at":"2016-09-20T04:47:39Z","group_mention_ids":[],"owner_ids":[],"external_id":null,"id":23,"position":2,"complete":false,"created_at":"2016-09-20T04:47:39Z"}],"started_at_override":null,"workflow_state_id":500000014,"updated_at":"2016-09-20T04:47:39Z","group_mention_ids":[],"support_tickets":[],"follower_ids":["57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef"],"owner_ids":[],"external_id":null,"id":20,"estimate":null,"commits":[],"files":[],"position":12147418112,"blocked":false,"project_id":5,"deadline":null,"created_at":"2016-09-20T04:47:39Z","moved_at":null},{"app_url":"https:\/\/app.shortcut.com\/philipcastiglione\/story\/15","description":"Well,
         really just go pretend to rescue her, since you arranged her kidnap. Potato
         potato. Hmm. That doesn''t really work in written form.","archived":false,"started":false,"story_links":[],"entity_type":"story","labels":[{"description":null,"archived":false,"entity_type":"label","color":null,"name":"Door
         Bashing","updated_at":"2016-09-20T04:46:23Z","external_id":null,"id":16,"created_at":"2016-09-20T04:46:23Z"},{"description":null,"archived":false,"entity_type":"label","color":null,"name":"Goons","updated_at":"2016-09-20T04:44:25Z","external_id":null,"id":10,"created_at":"2016-09-20T04:44:25Z"}],"external_tickets":[],"mention_ids":[],"member_mention_ids":[],"story_type":"feature","linked_files":[],"completed_at_override":null,"started_at":null,"completed_at":null,"name":"Rescue
         Princess","completed":false,"comments":[],"blocker":false,"branches":[],"epic_id":null,"previous_iteration_ids":[],"requested_by_id":"57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef","iteration_id":null,"tasks":[{"description":"Go
         To Goon Hideout","entity_type":"story-task","story_id":15,"mention_ids":[],"member_mention_ids":[],"completed_at":null,"updated_at":"2016-09-20T04:46:23Z","group_mention_ids":[],"owner_ids":[],"external_id":null,"id":17,"position":1,"complete":false,"created_at":"2016-09-20T04:46:23Z"},{"description":"Bash
         Down Door","entity_type":"story-task","story_id":15,"mention_ids":[],"member_mention_ids":[],"completed_at":null,"updated_at":"2016-09-20T04:46:23Z","group_mention_ids":[],"owner_ids":[],"external_id":null,"id":18,"position":2,"complete":false,"created_at":"2016-09-20T04:46:23Z"},{"description":"Take
-        Princess To Castle","entity_type":"story-task","story_id":15,"mention_ids":[],"member_mention_ids":[],"completed_at":null,"updated_at":"2016-09-20T04:46:23Z","group_mention_ids":[],"owner_ids":[],"external_id":null,"id":19,"position":3,"complete":false,"created_at":"2016-09-20T04:46:23Z"}],"started_at_override":null,"workflow_state_id":500000014,"updated_at":"2016-09-20T04:46:23Z","group_mention_ids":[],"support_tickets":[],"follower_ids":["57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef"],"owner_ids":[],"external_id":null,"id":15,"estimate":null,"commits":[],"files":[],"position":12147483648,"blocked":false,"project_id":5,"deadline":"2017-05-08T14:00:00Z","created_at":"2016-09-20T04:46:23Z","moved_at":null},{"app_url":"https:\/\/app.clubhouse.io\/philipcastiglione\/story\/8","description":"The
+        Princess To Castle","entity_type":"story-task","story_id":15,"mention_ids":[],"member_mention_ids":[],"completed_at":null,"updated_at":"2016-09-20T04:46:23Z","group_mention_ids":[],"owner_ids":[],"external_id":null,"id":19,"position":3,"complete":false,"created_at":"2016-09-20T04:46:23Z"}],"started_at_override":null,"workflow_state_id":500000014,"updated_at":"2016-09-20T04:46:23Z","group_mention_ids":[],"support_tickets":[],"follower_ids":["57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef"],"owner_ids":[],"external_id":null,"id":15,"estimate":null,"commits":[],"files":[],"position":12147483648,"blocked":false,"project_id":5,"deadline":"2017-05-08T14:00:00Z","created_at":"2016-09-20T04:46:23Z","moved_at":null},{"app_url":"https:\/\/app.shortcut.com\/philipcastiglione\/story\/8","description":"The
         first part in my nefarious plan.\n\n> Sneaky things are best done sneakily.","archived":false,"started":false,"story_links":[],"entity_type":"story","labels":[{"description":null,"archived":false,"entity_type":"label","color":null,"name":"Goons","updated_at":"2016-09-20T04:44:25Z","external_id":null,"id":10,"created_at":"2016-09-20T04:44:25Z"},{"description":null,"archived":false,"entity_type":"label","color":null,"name":"Hiring","updated_at":"2016-09-20T04:44:25Z","external_id":null,"id":9,"created_at":"2016-09-20T04:44:25Z"}],"external_tickets":[],"mention_ids":[],"member_mention_ids":[],"story_type":"feature","linked_files":[],"completed_at_override":null,"started_at":null,"completed_at":null,"name":"Hire
         Goons To Kidnap Princess","completed":false,"comments":[],"blocker":false,"branches":[],"epic_id":null,"previous_iteration_ids":[],"requested_by_id":"57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef","iteration_id":null,"tasks":[{"description":"Hire
         Goons","entity_type":"story-task","story_id":8,"mention_ids":[],"member_mention_ids":[],"completed_at":null,"updated_at":"2016-09-20T04:44:25Z","group_mention_ids":[],"owner_ids":[],"external_id":null,"id":11,"position":1,"complete":false,"created_at":"2016-09-20T04:44:25Z"},{"description":"Instruct
         Goons","entity_type":"story-task","story_id":8,"mention_ids":[],"member_mention_ids":[],"completed_at":null,"updated_at":"2016-09-20T04:44:25Z","group_mention_ids":[],"owner_ids":[],"external_id":null,"id":12,"position":2,"complete":false,"created_at":"2016-09-20T04:44:25Z"},{"description":"Cover
         Tracks","entity_type":"story-task","story_id":8,"mention_ids":[],"member_mention_ids":[],"completed_at":null,"updated_at":"2016-09-20T04:44:25Z","group_mention_ids":[],"owner_ids":[],"external_id":null,"id":13,"position":3,"complete":false,"created_at":"2016-09-20T04:44:25Z"},{"description":"Anonymously
         Inform On Goons","entity_type":"story-task","story_id":8,"mention_ids":[],"member_mention_ids":[],"completed_at":null,"updated_at":"2016-09-20T04:44:25Z","group_mention_ids":[],"owner_ids":[],"external_id":null,"id":14,"position":4,"complete":false,"created_at":"2016-09-20T04:44:25Z"}],"started_at_override":null,"workflow_state_id":500000011,"updated_at":"2016-09-20T04:44:25Z","group_mention_ids":[],"support_tickets":[],"follower_ids":["57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef"],"owner_ids":[],"external_id":null,"id":8,"estimate":null,"commits":[],"files":[],"position":22147483648,"blocked":false,"project_id":5,"deadline":"2016-12-13T13:00:00Z","created_at":"2016-09-20T04:44:25Z","moved_at":null}],"total":3}'
-    http_version: 
+    http_version:
   recorded_at: Sun, 22 Dec 2019 06:05:59 GMT
 recorded_with: VCR 3.0.3

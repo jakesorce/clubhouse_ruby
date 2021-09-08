@@ -1,10 +1,10 @@
 require 'json'
 require 'csv'
 
-module ClubhouseRuby
-  API_URL = "https://api.clubhouse.io/api/v3/".freeze
+module ShortcutRuby
+  API_URL = "https://api.app.shortcut.com/api/v3/".freeze
 
-  # Response formats the clubhouse api knows about
+  # Response formats the shortcut api knows about
   FORMATS = {
     json: {
       headers: { header: 'Content-Type', content: 'application/json' },
@@ -25,7 +25,7 @@ module ClubhouseRuby
     create: :Post
   }.freeze
 
-  # These are the resource for the clubhouse api and can form part of the path
+  # These are the resource for the shortcut api and can form part of the path
   RESOURCES = [
     :categories,
     :entity_templates,
@@ -48,7 +48,7 @@ module ClubhouseRuby
     :groups
   ].freeze
 
-  # These are the annoying edge cases in the clubhouse api that are don't fit
+  # These are the annoying edge cases in the shortcut api that are don't fit
   EXCEPTIONS = {
     bulk_create: {
       path: :bulk,

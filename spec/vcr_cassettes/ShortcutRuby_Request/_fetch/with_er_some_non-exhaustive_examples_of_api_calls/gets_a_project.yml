@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.clubhouse.io/api/v3/projects/5
+    uri: https://api.app.shortcut.com/api/v3/projects/5
     body:
       encoding: UTF-8
       string: "{}"
@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - Ruby
       Host:
-      - api.clubhouse.io
+      - api.app.shortcut.com
       Content-Type:
       - application/json
   response:
@@ -34,17 +34,17 @@ http_interactions:
       - Accept
       Database-Time:
       - '405438121'
-      Clubhouse-Company:
+      Shortcut-Company:
       - ''
-      Clubhouse-Organization:
+      Shortcut-Organization:
       - ''
       Access-Control-Expose-Headers:
-      - Database-Time, CH-Paginate-Incomplete, CH-Start-Time, CH-End-Time, Clubhouse-Company,
-        Clubhouse-Organization
+      - Database-Time, SC-Paginate-Incomplete, SC-Start-Time, SC-End-Time, Shortcut-Company,
+        Shortcut-Organization
     body:
       encoding: UTF-8
       string: '{"description":"Description of the project! _(Optional)_","archived":false,"entity_type":"project","days_to_thermometer":5,"color":"#888888","name":"Sweet
         Project","start_time":"2016-09-20T04:39:41Z","updated_at":"2016-09-20T04:39:41Z","follower_ids":[],"external_id":null,"id":5,"show_thermometer":true,"team_id":32,"iteration_length":2,"abbreviation":"SP","stats":{"num_stories":21,"num_points":0},"created_at":"2016-09-20T04:39:41Z"}'
-    http_version: 
+    http_version:
   recorded_at: Sun, 22 Dec 2019 06:00:35 GMT
 recorded_with: VCR 3.0.3

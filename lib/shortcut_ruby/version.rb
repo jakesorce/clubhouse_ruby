@@ -1,3 +1,3 @@
-module ClubhouseRuby
+module ShortcutRuby
   VERSION = "0.10.0"
 end

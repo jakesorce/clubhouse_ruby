@@ -1,18 +1,18 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'clubhouse_ruby/version'
+require 'shortcut_ruby/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'clubhouse_ruby'
-  spec.version       = ClubhouseRuby::VERSION
+  spec.name          = 'shortcut_ruby'
+  spec.version       = ShortcutRuby::VERSION
   spec.authors       = ['Jake Sorce']
   spec.email         = ['jakesorce@gmail.com']
 
-  spec.summary       = 'A lightweight Ruby wrapper for the Clubhouse REST API.'
-  spec.homepage      = 'https://github.com/PhilipCastiglione/clubhouse_ruby'
+  spec.summary       = 'A lightweight Ruby wrapper for the Shortcut REST API.'
+  spec.homepage      = 'https://github.com/jakesorce/clubhouse_ruby'
   spec.license       = 'MIT'
 
-  spec.files         = `git ls-files -z`.split('\x0').reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
