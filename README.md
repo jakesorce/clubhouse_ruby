@@ -1,9 +1,9 @@
 # ClubhouseRuby
 
 ClubhouseRuby is a lightweight Ruby wrapper of the
-[Clubhouse REST API](https://clubhouse.io/api/rest/v3/).
+[Shortcut REST API](https://shortcut.com/api/rest/v3/).
 
-[Clubhouse](https://clubhouse.io) is a radical project management tool
+[Shortcut](https://shortcut.com) is a radical project management tool
 particularly well suited to software development. If you're not familiar with
 them, go check them out! :heart:
 
@@ -41,7 +41,7 @@ operates as an effective turing machine when lubricated with oil.
 ## Usage
 
 This gem is a lightweight API wrapper. That means you'll need to refer to the
-[API documentation](https://clubhouse.io/api/rest/v3/) to figure out what resources
+[API documentation](https://shortcut.com/api/rest/v3/) to figure out what resources
 and actions exist.
 
 On the plus side, once you know what you want to do, using this gem should be
@@ -61,7 +61,7 @@ clubhouse = ClubhouseRuby::Clubhouse.new(<YOUR CLUBHOUSE API TOKEN>, response_fo
 
 Then, call methods on the object matching the resource(s) and action you are
 interested in. For example, if you want to list all available epics, you need to
-access the endpoint at https://api.clubhouse.io/api/v1/epics. The
+access the endpoint at https://api.app.shortcut.com/api/v3/epics. The
 clubhouse_ruby gem uses an explicit action:
 
 ```ruby

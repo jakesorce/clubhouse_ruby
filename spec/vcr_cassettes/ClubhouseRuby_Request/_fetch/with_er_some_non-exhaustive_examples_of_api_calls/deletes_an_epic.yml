@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.clubhouse.io/api/v3/epics/25
+    uri: https://api.app.shortcut.com/api/v3/epics/25
     body:
       encoding: UTF-8
       string: "{}"
@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - Ruby
       Host:
-      - api.clubhouse.io
+      - api.app.shortcut.com
       Content-Type:
       - application/json
   response:
@@ -42,6 +42,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Sun, 22 Dec 2019 05:58:24 GMT
 recorded_with: VCR 3.0.3

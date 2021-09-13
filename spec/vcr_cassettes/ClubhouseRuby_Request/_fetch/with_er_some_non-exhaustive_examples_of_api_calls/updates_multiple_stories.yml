@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.clubhouse.io/api/v3/stories/bulk
+    uri: https://api.app.shortcut.com/api/v3/stories/bulk
     body:
       encoding: UTF-8
       string: '{"story_ids":[8,15],"archived":true}'
@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - Ruby
       Host:
-      - api.clubhouse.io
+      - api.app.shortcut.com
       Content-Type:
       - application/json
   response:
@@ -43,10 +43,10 @@ http_interactions:
         Clubhouse-Organization
     body:
       encoding: ASCII-8BIT
-      string: '[{"app_url":"https:\/\/app.clubhouse.io\/philipcastiglione\/story\/15","archived":true,"started":false,"story_links":[],"entity_type":"story","labels":[{"description":null,"archived":false,"entity_type":"label","color":null,"name":"Door
+      string: '[{"app_url":"https:\/\/app.shortcut.com\/philipcastiglione\/story\/15","archived":true,"started":false,"story_links":[],"entity_type":"story","labels":[{"description":null,"archived":false,"entity_type":"label","color":null,"name":"Door
         Bashing","updated_at":"2016-09-20T04:46:23Z","external_id":null,"id":16,"created_at":"2016-09-20T04:46:23Z"},{"description":null,"archived":false,"entity_type":"label","color":null,"name":"Goons","updated_at":"2016-09-20T04:44:25Z","external_id":null,"id":10,"created_at":"2016-09-20T04:44:25Z"}],"external_tickets":[],"task_ids":[19,18,17],"mention_ids":[],"member_mention_ids":[],"story_type":"feature","file_ids":[],"completed_at_override":null,"started_at":null,"completed_at":null,"name":"Rescue
-        Princess","completed":false,"blocker":false,"epic_id":null,"previous_iteration_ids":[],"requested_by_id":"57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef","iteration_id":null,"started_at_override":null,"workflow_state_id":500000014,"updated_at":"2019-12-22T06:11:13Z","group_mention_ids":[],"support_tickets":[],"follower_ids":["57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef"],"owner_ids":[],"external_id":null,"id":15,"estimate":null,"position":12147483648,"blocked":false,"project_id":5,"linked_file_ids":[],"deadline":"2017-05-08T14:00:00Z","comment_ids":[],"created_at":"2016-09-20T04:46:23Z","moved_at":null},{"app_url":"https:\/\/app.clubhouse.io\/philipcastiglione\/story\/8","archived":true,"started":false,"story_links":[],"entity_type":"story","labels":[{"description":null,"archived":false,"entity_type":"label","color":null,"name":"Goons","updated_at":"2016-09-20T04:44:25Z","external_id":null,"id":10,"created_at":"2016-09-20T04:44:25Z"},{"description":null,"archived":false,"entity_type":"label","color":null,"name":"Hiring","updated_at":"2016-09-20T04:44:25Z","external_id":null,"id":9,"created_at":"2016-09-20T04:44:25Z"}],"external_tickets":[],"task_ids":[11,14,12,13],"mention_ids":[],"member_mention_ids":[],"story_type":"feature","file_ids":[],"completed_at_override":null,"started_at":null,"completed_at":null,"name":"Hire
+        Princess","completed":false,"blocker":false,"epic_id":null,"previous_iteration_ids":[],"requested_by_id":"57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef","iteration_id":null,"started_at_override":null,"workflow_state_id":500000014,"updated_at":"2019-12-22T06:11:13Z","group_mention_ids":[],"support_tickets":[],"follower_ids":["57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef"],"owner_ids":[],"external_id":null,"id":15,"estimate":null,"position":12147483648,"blocked":false,"project_id":5,"linked_file_ids":[],"deadline":"2017-05-08T14:00:00Z","comment_ids":[],"created_at":"2016-09-20T04:46:23Z","moved_at":null},{"app_url":"https:\/\/app.shortcut.com\/philipcastiglione\/story\/8","archived":true,"started":false,"story_links":[],"entity_type":"story","labels":[{"description":null,"archived":false,"entity_type":"label","color":null,"name":"Goons","updated_at":"2016-09-20T04:44:25Z","external_id":null,"id":10,"created_at":"2016-09-20T04:44:25Z"},{"description":null,"archived":false,"entity_type":"label","color":null,"name":"Hiring","updated_at":"2016-09-20T04:44:25Z","external_id":null,"id":9,"created_at":"2016-09-20T04:44:25Z"}],"external_tickets":[],"task_ids":[11,14,12,13],"mention_ids":[],"member_mention_ids":[],"story_type":"feature","file_ids":[],"completed_at_override":null,"started_at":null,"completed_at":null,"name":"Hire
         Goons To Kidnap Princess","completed":false,"blocker":false,"epic_id":null,"previous_iteration_ids":[],"requested_by_id":"57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef","iteration_id":null,"started_at_override":null,"workflow_state_id":500000011,"updated_at":"2019-12-22T06:11:13Z","group_mention_ids":[],"support_tickets":[],"follower_ids":["57e0b4eb-a95f-4dad-81c5-dd817fcdd5ef"],"owner_ids":[],"external_id":null,"id":8,"estimate":null,"position":22147483648,"blocked":false,"project_id":5,"linked_file_ids":[],"deadline":"2016-12-13T13:00:00Z","comment_ids":[],"created_at":"2016-09-20T04:44:25Z","moved_at":null}]'
-    http_version: 
+    http_version:
   recorded_at: Sun, 22 Dec 2019 06:11:13 GMT
 recorded_with: VCR 3.0.3
