@@ -5,11 +5,11 @@ require 'shortcut_ruby/version'
 Gem::Specification.new do |spec|
   spec.name          = 'shortcut_ruby'
   spec.version       = ShortcutRuby::VERSION
-  spec.authors       = ['Jake Sorce']
-  spec.email         = ['jakesorce@gmail.com']
+  spec.authors       = ['Michael Carey', 'Jake Sorce']
+  spec.email         = ['engineering@doubleloop.app']
 
   spec.summary       = 'A lightweight Ruby wrapper for the Shortcut REST API.'
-  spec.homepage      = 'https://github.com/jakesorce/clubhouse_ruby'
+  spec.homepage      = 'https://github.com/doubleloopapp/shortcut_ruby'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

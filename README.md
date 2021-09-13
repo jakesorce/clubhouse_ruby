@@ -3,6 +3,8 @@
 ShortcutRuby is a lightweight Ruby wrapper of the
 [Shortcut REST API](https://shortcut.com/api/rest/v3).
 
+This gem is a fork of the original, [clubhouse_ruby](https://github.com/jakesorce/clubhouse_ruby), renamed and updated to work with Shortcut.
+
 [Shortcut](https://shortcut.com) is a radical project management tool
 particularly well suited to software development. If you're not familiar with
 them, go check them out! :heart:
@@ -196,7 +198,7 @@ accessing nested resources) followed by a final action that matches the methods
 in the Shortcut API documentation.
 
 These resources and methods are enumerated in the source code
-[here](https://github.com/jakesorce/clubhouse_ruby/blob/master/lib/shortcut_ruby/constants.rb)
+[here](https://github.com/doubleloopapp/shortcut_ruby/blob/master/lib/shortcut_ruby/constants.rb)
 but generally you should find the url you are interested in from the docs.
 
 ## Errors
@@ -288,7 +290,7 @@ will be in publicly visible from the code in this repo.**
 ## Contributing
 
 Bug reports and pull requests are entirely welcome on GitHub at
-https://github.com/jakesorce/shortcut_ruby.
+https://github.com/doubleloopapp/shortcut_ruby.
 
 ## License
 
