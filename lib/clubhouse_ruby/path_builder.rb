@@ -16,7 +16,7 @@ module ClubhouseRuby
     #
     # This example will execute a call to:
     #
-    # `https://api.clubhouse.io/api/v3/stories/{story-id}/comments/{comment-id}`
+    # `https://api.app.shortcut.com/api/v3/stories/{story-id}/comments/{comment-id}`
     #
     # with arguments:
     #
