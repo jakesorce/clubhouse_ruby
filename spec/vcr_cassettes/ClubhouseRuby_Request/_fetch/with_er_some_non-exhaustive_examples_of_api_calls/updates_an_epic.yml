@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.clubhouse.io/api/v3/epics/25
+    uri: https://api.app.shortcut.com/api/v3/epics/25
     body:
       encoding: UTF-8
       string: '{"state":"in progress"}'
@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - Ruby
       Host:
-      - api.clubhouse.io
+      - api.app.shortcut.com
       Content-Type:
       - application/json
   response:

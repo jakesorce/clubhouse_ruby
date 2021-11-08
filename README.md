@@ -18,6 +18,11 @@ less code and maintenance effort, allowing the developer to be lazy. A
 reasonable person might fairly assume this to be the true rationale behind the
 philosophy. They'd be right.
 
+## Name Change to *Shortcut*
+
+*Clubhouse* has changed its name to *Shortcut* and has changed API URLs. This 
+gem is using the new URL, but has not otherwise updated the name.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -61,7 +66,7 @@ clubhouse = ClubhouseRuby::Clubhouse.new(<YOUR CLUBHOUSE API TOKEN>, response_fo
 
 Then, call methods on the object matching the resource(s) and action you are
 interested in. For example, if you want to list all available epics, you need to
-access the endpoint at https://api.clubhouse.io/api/v1/epics. The
+access the endpoint at https://api.app.shortcut.com/api/v1/epics. The
 clubhouse_ruby gem uses an explicit action:
 
 ```ruby

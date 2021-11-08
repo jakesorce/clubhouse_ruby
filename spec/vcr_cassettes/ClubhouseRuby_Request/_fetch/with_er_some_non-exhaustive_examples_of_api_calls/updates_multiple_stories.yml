@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.clubhouse.io/api/v3/stories/bulk
+    uri: https://api.app.shortcut.com/api/v3/stories/bulk
     body:
       encoding: UTF-8
       string: '{"story_ids":[8,15],"archived":true}'
@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - Ruby
       Host:
-      - api.clubhouse.io
+      - api.app.shortcut.com
       Content-Type:
       - application/json
   response:
